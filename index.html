@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maxwilliam & Giovanna - Casamento</title>
+  <style>
+    /* RESET & FONTES */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      color: #2b2b2b;
+      background-color: #112d1d;
+      line-height: 1.6;
+    }
+
+    /* PALETA DE CORES
+       Verde Escuro Principal: #112d1d
+       Verde Secundário (Cards): #183e28
+       Bege/Off-white (Fundo Claro): #f4f1ea
+       Dourado (Detalhes): #d4af37
+    */
+
+    /* HERO SECTION */
+    .hero {
+      position: relative;
+      background: linear-gradient(rgba(10, 17, 13, 0.75), rgba(17, 45, 29, 0.85)), 
+                  url('') center/cover no-repeat;
+      height:800px;
+      color: #ffffff;
+      text-align: center;
+      padding: 200px 20px 80px 20px;
+      border-bottom: 2px solid #d4af37;
+      z-index: 1;
+
+
+}
+
+    
+    .hero-tag {
+      color: #eacc6a;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 15px;
+      position: relative; /* Obrigatório para o z-index funcionar */
+      z-index: 3; /* Nível mais alto */
+    }
+    .hero-title {
+      font-size: 2.8rem;
+      font-weight: normal;
+      letter-spacing: 3px;
+      margin-bottom: 10px;
+      position: relative; /* Obrigatório para o z-index funcionar */
+      z-index: 3; /* Nível mais alto */
+    }
+    .hero-sub {
+      font-size: 1.2rem;
+      font-style: italic;
+      color: #e2e8f0;
+      margin-bottom: 25px;
+      position: relative; /* Obrigatório para o z-index funcionar */
+      z-index: 3; /* Nível mais alto */
+    }
+    .hero-date {
+      color: #f0ecdd;
+      font-size: 1.1rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 30px;
+      position: relative; /* Obrigatório para o z-index funcionar */
+      z-index: 3; /* Nível mais alto */
+    }
+    .btn-gold {
+      border-radius: 20px;
+      display: inline-block;
+      padding: 12px 30px;
+      border: 1px solid #e4e0cf;
+      color: #f3e8c3;
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      background-color: rgba(87, 106, 95, 0.6);
+      position: relative; /* Obrigatório para o z-index funcionar */
+      z-index: 3; /* Nível mais alto */
+    }
+    .btn-gold:hover {
+      background-color: #d4af37;
+      color: #112d1d;
+      font-weight: bold;
+      position: relative; /* Obrigatório para o z-index funcionar */
+      z-index: 3; /* Nível mais alto */
+    }
+
+    /* COUNTDOWN SECTION */
+    .countdown-section {
+      background-color: #f4f1ea;
+      color: #112d1d;
+      padding: 100px 20px;
+      text-align: center;
+      height: 500px;
+    }
+    .section-subtitle {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #556b2f;
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-size: 2rem;
+      font-family: 'Times New Roman', serif;
+      color: #112d1d;
+      margin-bottom: 10px;
+      font-weight: normal;
+    }
+    .countdown-grid {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      max-width: 600px;
+      margin: 30px auto 0 auto;
+      flex-wrap: wrap;
+    }
+    .countdown-box {
+      flex: 1;
+      width: 100px;
+      background-color: #ffffff;
+      border: 1px solid #e0dcd3;
+      padding: 15px 10px;
+      text-align: center;
+      border-radius: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+      
+    }
+    .countdown-number {
+      font-size: 2rem;
+      font-family: 'Times New Roman', serif;
+      color: #112d1d;
+      font-weight: bold;
+    }
+    .countdown-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #666;
+    }
+
+    /* CARDS SECTION */
+    .cards-section {
+      height: 1000px;
+      background-color: #112d1d;
+      padding: 70px 20px;
+      text-align: center;
+    }
+    .cards-section .section-title {
+      color: #ffffff;
+    }
+    .cards-section .section-subtitle {
+      color: #f4d572;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      column-gap: 110px;
+      row-gap: 25px;
+      max-width: 1300px;
+      margin: 40px auto 0 auto;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .card-item {
+      background-color: #183e28;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      padding: 50px 20px;
+      text-align: center;
+      border-radius: 30px;
+      transition: transform 0.3s ease;
+      width: 437px;
+      height: 315px;
+      
+    }
+    .card-item-grande {
+      background-color: #183e28;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      padding: 50px 20px;
+      text-align: center;
+      border-radius: 30px;
+      transition: transform 0.3s ease;
+      width: 905px;
+      height: 315px;
+    }
+    .card-item-grande:hover {
+      transform: translateY(-5px);
+      border-color: #d4af37;
+    }
+    .card-item:hover {
+      transform: translateY(-5px);
+      border-color: #d4af37;
+    }
+    .card-item h3 {
+      justify-content: left;
+      padding-right: 225px;
+      padding-top: 80px;
+      color: #e6dec6;
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      font-weight: normal;
+      white-space: nowrap;
+    }
+    .card-item p {
+      text-align: left;
+      color: #d1e2c4;
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+
+    /* STORY SECTION */
+    .story-section {
+      background-color: #f0e8d5;
+      color: #112d1d;
+      padding: 70px 20px;
+      text-align: center;
+      height: 700px;
+    }
+    .story-container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    .story-text {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #333333;
+      margin-top: 20px;
+    }
+
+    /* PROMISE SECTION */
+    .promise-section {
+      background-color: #112d1d;
+      color: #ffffff;
+      padding: 60px 20px;
+      text-align: center;
+      border-top: 1px solid #d4af37;
+      border-bottom: 1px solid #d4af37;
+    }
+    .promise-box {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .promise-verse {
+      font-size: 1.3rem;
+      font-style: italic;
+      color: #f4f1ea;
+      margin: 20px 0;
+      line-height: 1.6;
+    }
+    .promise-ref {
+      color: #d4af37;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* RSVP MODAL / INPUT */
+    .rsvp-box {
+      background-color: #ffffff;
+      padding: 30px;
+      max-width: 450px;
+      margin: 30px auto;
+      border-radius: 6px;
+      border: 1px solid #e0dcd3;
+    }
+    .rsvp-input {
+      width: 100%;
+      padding: 12px;
+      margin: 15px 0;
+      border: 1px solid #112d1d;
+      text-align: center;
+      font-size: 1rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-radius: 4px;
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: #0b1f14;
+      color: #ffffff;
+      text-align: center;
+      padding: 50px 20px;
+    }
+    footer h2 {
+      font-size: 2rem;
+      font-family: 'Times New Roman', serif;
+      color: #ffffff;
+      font-weight: normal;
+      margin-top: 10px;
+    }
+    footer p {
+      color: #d4af37;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .header-bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Garante que o vídeo cubra todo o header sem distorcer */
+  z-index: 1; /* Nível mais baixo */
+    }
+    /* 2. FILTRO ESCURO (OVERLAY) */
+    .hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 0.5 é a opacidade (50% escuro) */
+  z-index: 2; /* Fica entre o vídeo e o texto */
+}
+    /* Estado inicial: o elemento fica transparente e 40px mais para baixo */
+    .reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  will-change: opacity, transform;
+}
+
+/* Estado final: quando entra na tela, sobe e fica visível */
+    .reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.botao-cards{
+    border-radius: 20px;
+    display: inline-block;
+    padding: 12px 30px  12px 30px;
+    border: 1px solid #e4e0cf;
+    color: #f3e8c3;
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    background-color: rgba(87, 106, 95, 0.6);
+    position: relative; /* Obrigatório para o z-index funcionar */
+    z-index: 3; /* Nível mais alto */
+}
+.botao-cards:hover {
+    background-color: #e3decd;
+    color: #112d1d;
+    font-weight: bold;
+    position: relative; /* Obrigatório para o z-index funcionar */
+    z-index: 3; /* Nível mais alto */
+  </style>
+</head>
+<body>
+
+  <!-- HERO SECTION -->
+  <header class="hero">
+    <video autoplay muted loop playsinline class="header-bg-video">
+    <source src="c:\Users\maxwi\Downloads\WhatsApp Video 2026-08-20 at 19.13.34.mp4" type="video/mp4">
+  </video>
+    <div class="hero-tag">Nosso Casamento</div>
+    <h1 class="hero-title">MAXWILLIAM &amp; GIOVANNA</h1>
+    <p class="hero-sub">Nosso para sempre começa aqui</p>
+    <div class="hero-date">7 DE JANEIRO DE 2027</div>
+    <a href="#rsvp" class="btn-gold">CELEBRE CONOSCO</a>
+  </header>
+
+  <!-- SAVE THE DATE / COUNTDOWN -->
+  <section class="countdown-section">
+    <div class="section-subtitle reveal">Um dia para guardar</div>
+    <h2 class="section-title reveal">SAVE THE DATE</h2>
+    <p class="reveal" style="color: #555;margin-bottom: 10px; font-size: 40px; color: #194e2f;">07 de janeiro de 2027 </p>
+    <p class="reveal" style="font-size: 18px;"> Reserve este dia para celebrar conosco. </p>
+    <div class="countdown-grid reveal">
+      <div class="countdown-box reveal">
+        <div class="countdown-number reveal" id="days">139</div>
+        <div class="countdown-label reveal">Dias</div>
+      </div>
+      <div class="countdown-box reveal">
+        <div class="countdown-number reveal" id="hours">04</div>
+        <div class="countdown-label reveal">Horas</div>
+      </div>
+      <div class="countdown-box reveal">
+        <div class="countdown-number reveal" id="minutes">32</div>
+        <div class="countdown-label reveal">Minutos</div>
+      </div>
+      <div class="countdown-box reveal">
+        <div class="countdown-number reveal" id="seconds">18</div>
+        <div class="countdown-label reveal">Segundos</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARDS SECTION -->
+  <section class="cards-section">
+    <div class="section-subtitle reveal">Tudo para este dia</div>
+    <h2 class="section-title reveal">Cada detalhe, preparado com carinho</h2>
+
+    <div class="card-grid reveal">
+      <div class="card-item" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.85) 100%), url('https://github.com/MaxwilliamSena/repositorio-de-imagens/blob/main/30d48eed-0d6c-4686-97ae-93504f0ea7bf.jpg?raw=true'); background-size: cover; background-position: center;">
+        <h3>Confirmar presença</h3>
+        <p>Confirme sua presença no nosso grande dia. Sua presença é muito especial para nós</p>
+        <a href="#rsvp" class="botao-cards" style="margin-right: 195px; font-size: 8px;">CONFIRMAR PRESENÇA</a>
+      </div>
+
+      <div class="card-item reveal" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.85) 100%), url('https://github.com/MaxwilliamSena/repositorio-de-imagens/blob/main/e69bc527-01de-41bd-b04d-e4db3c9e09c6.jpg?raw=true'); background-size: cover; background-position: center;">
+        <h3>Data, hora &amp; local</h3>
+        <p>Confira todos os detalhes para chegar ao Espaço Jardim das Oliveiras.</p>
+        <a href="https://google.com/maps/search/api=1&query=Espaço+Jardim+das+Oliveiras" target="_blank" class="botao-cards" style="margin-right: 215px; font-size: 8px;">VER INFORMAÇÕES</a>
+      </div>
+
+      <div class="card-item reveal" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.85) 100%), url('https://github.com/MaxwilliamSena/repositorio-de-imagens/blob/main/06886b58-dded-41a6-b88a-283fbcb3c61f.jpg?raw=true'); background-size: cover; background-position: center;">
+        <h3>Etiqueta &amp; dress code</h3>
+        <p>Tudo o que você precisa saber para aproveitar com conforto e elegância.</p>
+        <a href="#dresscode" class="botao-cards" style="margin-right: 235px; font-size: 8px;">VER DRESS CODE</a>
+      </div>
+
+      <div class="card-item reveal" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.85) 100%), url('https://github.com/MaxwilliamSena/repositorio-de-imagens/blob/main/file_000000001ef481f5a68f7e40492659e9.png?raw=true'); background-size: cover; background-position: top;">
+        <h3>Lista de presentes</h3>
+        <p>Escolhemos com carinho algumas opções para o nosso novo começo.</p>
+        <a href="#presentes" class="botao-cards" style="margin-right: 265px; font-size: 8px;">VER LISTA</a>
+      </div>
+
+      <div class="card-item-grande reveal" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.85) 100%), url('https://github.com/MaxwilliamSena/repositorio-de-imagens/blob/main/file_00000000adf081f7bfda156fabcb4622.png?raw=true'); background-size: cover; background-position: top;">
+        <h3 style="color: #d4af37; font-size: 1.3rem; margin-bottom: 10px; font-weight: normal; padding-right: 720px; padding-top: 80px;">Nossa história</h3>
+        <p style="color: #d1e2c4; font-size: 0.95rem; margin-bottom: 20px; text-align: left;">Conheça um pouco da história que nos trouxe até aqui. Começamos com um sorvete, construímos uma amizade, aprendemos a esperar e, no tempo certo, Deus transformou tudo em amor. 🤍</p>
+        <a href="#presentes" class="botao-cards" style="margin-right: 715px; font-size: 8px;">VER LISTA</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY SECTION -->
+  <section class="story-section">
+    <div class="story-container">
+      <div class="section-subtitle reveal" style="padding-right: 800px;">Capítulo Um</div>
+      <h2 class="section-title reveal">Nossa história</h2>
+      <p class="story-text reveal">
+        Antes de sermos um casal, éramos duas histórias seguindo caminhos diferentes. Em algum momento, nossos caminhos se encontraram, e desde então começamos a construir uma história que escolhemos continuar escrevendo juntos.
+      </p>
+    </div>
+  </section>
+
+  <!-- PROMISE SECTION -->
+  <section class="promise-section">
+    <div class="promise-box">
+      <div class="hero-tag reveal">Nossa Promessa</div>
+      <h2 class="reveal" style="font-family: 'Times New Roman', serif; font-weight: normal;">Um amor para toda a vida</h2>
+      <p class="promise-verse reveal">
+        "Assim, eles já não são dois, mas sim uma só carne. Portanto, o que Deus uniu, ninguém separe."
+      </p>
+      <div class="promise-ref reveal">Mateus 19:6</div>
+    </div>
+  </section>
+
+  <!-- RSVP CONFIRMATION SECTION -->
+  <section id="rsvp" class="countdown-section reveal">
+    <div class="section-subtitle reveal">Sua presença é muito importante</div>
+    <h2 class="section-title reveal">Confirmação de Presença</h2>
+    <div class="rsvp-box reveal">
+      <label class="reveal" style="font-size: 0.85rem; font-weight: bold; text-transform: uppercase;">Digite o Código do seu Convite:</label>
+      <input class="reveal" type="text" id="inviteCode" class="rsvp-input" placeholder="EX: MAXGIO" />
+      <button class="reveal" onclick="confirmar()" class="btn-gold" style="background-color: #112d1d; width: 100%;">Acessar Convite</button>
+      <div id="rsvpStatus" style="margin-top: 15px; font-weight: bold; color: #112d1d;"></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Com todo o nosso carinho</p>
+    <p style="color: #ffffff; text-transform: none; margin-top: 5px;">Esperamos você para viver esse dia conosco.</p>
+    <h2>Maxwilliam &amp; Giovanna</h2>
+    <p style="margin-top: 15px;">22 DE MAIO DE 2027</p>
+  </footer>
+
+  <!-- SCRIPT COUNTDOWN & RSVP -->
+  <script>
+    // Contador em tempo real para 22/05/2027
+    const targetDate = new Date("May 22, 2027 17:00:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const difference = targetDate - now;
+
+      if (difference > 0) {
+        const d = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const h = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const m = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((difference % (1000 * 60)) / 1000);
+
+        document.getElementById("days").innerText = d;
+        document.getElementById("hours").innerText = h;
+        document.getElementById("minutes").innerText = m;
+        document.getElementById("seconds").innerText = s;
+      }
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // Validador de Código RSVP
+    function confirmar() {
+      const input = document.getElementById("inviteCode").value.trim();
+      const status = document.getElementById("rsvpStatus");
+      if (input !== "") {
+        status.style.color = "#183e28";
+        status.innerHTML = "Código <strong>" + input.toUpperCase() + "</strong> validado! Presença confirmada para o casamento de Maxwilliam & Giovanna.";
+      } else {
+        status.style.color = "#a94442";
+        status.innerText = "Por favor, digite o código do seu convite.";
+      }
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.15 // Dispara quando 15% do elemento estiver visível na tela
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        // Deixa de observar para a animação rodar apenas uma vez
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  // Seleciona todos os elementos com a classe .reveal
+  const elementsToAnimate = document.querySelectorAll('.reveal');
+  elementsToAnimate.forEach(el => observer.observe(el));
+});
+  </script>
+</body>
+</html>
