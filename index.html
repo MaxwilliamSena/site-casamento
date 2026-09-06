@@ -36,35 +36,32 @@
       padding: 200px 20px 80px 20px;
       border-bottom: 2px solid #d4af37;
       z-index: 1;
+    }
 
-
-}
-
-    
     .hero-tag {
       color: #eacc6a;
       font-size: 0.85rem;
       text-transform: uppercase;
       letter-spacing: 3px;
       margin-bottom: 15px;
-      position: relative; /* Obrigatório para o z-index funcionar */
-      z-index: 3; /* Nível mais alto */
+      position: relative;
+      z-index: 3;
     }
     .hero-title {
       font-size: 2.8rem;
       font-weight: normal;
       letter-spacing: 3px;
       margin-bottom: 10px;
-      position: relative; /* Obrigatório para o z-index funcionar */
-      z-index: 3; /* Nível mais alto */
+      position: relative;
+      z-index: 3;
     }
     .hero-sub {
       font-size: 1.2rem;
       font-style: italic;
       color: #e2e8f0;
       margin-bottom: 25px;
-      position: relative; /* Obrigatório para o z-index funcionar */
-      z-index: 3; /* Nível mais alto */
+      position: relative;
+      z-index: 3;
     }
     .hero-date {
       color: #f0ecdd;
@@ -72,8 +69,8 @@
       letter-spacing: 3px;
       text-transform: uppercase;
       margin-bottom: 30px;
-      position: relative; /* Obrigatório para o z-index funcionar */
-      z-index: 3; /* Nível mais alto */
+      position: relative;
+      z-index: 3;
     }
     .btn-gold {
       border-radius: 20px;
@@ -87,15 +84,15 @@
       text-transform: uppercase;
       transition: all 0.3s ease;
       background-color: rgba(87, 106, 95, 0.6);
-      position: relative; /* Obrigatório para o z-index funcionar */
-      z-index: 3; /* Nível mais alto */
+      position: relative;
+      z-index: 3;
     }
     .btn-gold:hover {
       background-color: #d4af37;
       color: #112d1d;
       font-weight: bold;
-      position: relative; /* Obrigatório para o z-index funcionar */
-      z-index: 3; /* Nível mais alto */
+      position: relative;
+      z-index: 3;
     }
 
     /* COUNTDOWN SECTION */
@@ -137,7 +134,6 @@
       text-align: center;
       border-radius: 20px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.03);
-      
     }
     .countdown-number {
       font-size: 2rem;
@@ -167,7 +163,6 @@
     }
     .card-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       column-gap: 110px;
       row-gap: 25px;
       max-width: 1300px;
@@ -184,7 +179,6 @@
       transition: transform 0.3s ease;
       width: 437px;
       height: 315px;
-      
     }
     .card-item-grande {
       background-color: #183e28;
@@ -196,10 +190,7 @@
       width: 905px;
       height: 315px;
     }
-    .card-item-grande:hover {
-      transform: translateY(-5px);
-      border-color: #d4af37;
-    }
+    .card-item-grande:hover,
     .card-item:hover {
       transform: translateY(-5px);
       border-color: #d4af37;
@@ -309,81 +300,159 @@
       text-transform: uppercase;
     }
     .header-bg-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Garante que o vídeo cubra todo o header sem distorcer */
-  z-index: 1; /* Nível mais baixo */
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
     }
-    /* 2. FILTRO ESCURO (OVERLAY) */
     .hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* 0.5 é a opacidade (50% escuro) */
-  z-index: 2; /* Fica entre o vídeo e o texto */
-}
-    /* Estado inicial: o elemento fica transparente e 40px mais para baixo */
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 2;
+    }
     .reveal {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-  will-change: opacity, transform;
-}
-
-/* Estado final: quando entra na tela, sobe e fica visível */
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      will-change: opacity, transform;
+    }
     .reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.botao-cards{
-    border-radius: 20px;
-    display: inline-block;
-    padding: 12px 30px  12px 30px;
-    border: 1px solid #e4e0cf;
-    color: #f3e8c3;
-    text-decoration: none;
-    font-size: 0.85rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
-    background-color: rgba(87, 106, 95, 0.6);
-    position: relative; /* Obrigatório para o z-index funcionar */
-    z-index: 3; /* Nível mais alto */
-}
-.botao-cards:hover {
-    background-color: #e3decd;
-    color: #112d1d;
-    font-weight: bold;
-    position: relative; /* Obrigatório para o z-index funcionar */
-    z-index: 3; /* Nível mais alto */
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .botao-cards {
+      border-radius: 20px;
+      display: inline-block;
+      padding: 12px 30px;
+      border: 1px solid #e4e0cf;
+      color: #f3e8c3;
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      background-color: rgba(87, 106, 95, 0.6);
+      position: relative;
+      z-index: 3;
+    }
+    .botao-cards:hover {
+      background-color: #e3decd;
+      color: #112d1d;
+      font-weight: bold;
+      position: relative;
+      z-index: 3;
+    }
+
+    /* =========================================================
+       AJUSTES DE RESPONSIVIDADE (MOBILE E TABLET) - APENAS TECLAS < 992px
+       ========================================================= */
+    @media (max-width: 992px) {
+      .hero {
+        height: auto;
+        min-height: 100vh;
+        padding: 120px 20px 60px 20px;
+      }
+      .hero-title {
+        font-size: 1.8rem;
+      }
+      .hero-sub {
+        font-size: 1rem;
+      }
+      .hero-date {
+        font-size: 0.95rem;
+      }
+
+      .countdown-section {
+        height: auto;
+        padding: 60px 20px;
+      }
+      .countdown-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+      .countdown-box {
+        width: 100%;
+      }
+
+      .cards-section {
+        height: auto;
+        padding: 60px 20px;
+      }
+      .card-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+      .card-item, 
+      .card-item-grande {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        min-height: 280px;
+        padding: 30px 20px !important;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+      }
+      .card-item h3,
+      .card-item-grande h3 {
+        padding: 0 !important;
+        margin-top: 20px;
+        text-align: center;
+        white-space: normal !important;
+        justify-content: center;
+      }
+      .card-item p,
+      .card-item-grande p {
+        text-align: center !important;
+        margin-bottom: 15px;
+      }
+      .botao-cards {
+        margin-right: 0 !important;
+        font-size: 10px !important;
+        width: 100%;
+        max-width: 220px;
+      }
+
+      .story-section {
+        height: auto;
+        padding: 60px 20px;
+      }
+      .story-container .section-subtitle {
+        padding-right: 0 !important;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <!-- HERO SECTION -->
   <header class="hero">
     <video autoplay muted loop playsinline class="header-bg-video">
-    <source src="c:\Users\maxwi\Downloads\WhatsApp Video 2026-08-20 at 19.13.34.mp4" type="video/mp4">
-  </video>
+      <source src="c:\Users\maxwi\Downloads\WhatsApp Video 2026-08-20 at 19.13.34.mp4" type="video/mp4">
+    </video>
     <div class="hero-tag">Nosso Casamento</div>
-    <h1 class="hero-title">MAXWILLIAM &amp; GIOVANNA</h1>
+    <h1 class="hero-title">MAXWILLIAM & GIOVANNA</h1>
     <p class="hero-sub">Nosso para sempre começa aqui</p>
     <div class="hero-date">7 DE JANEIRO DE 2027</div>
     <a href="#rsvp" class="btn-gold">CELEBRE CONOSCO</a>
   </header>
 
-  <!-- SAVE THE DATE / COUNTDOWN -->
   <section class="countdown-section">
     <div class="section-subtitle reveal">Um dia para guardar</div>
     <h2 class="section-title reveal">SAVE THE DATE</h2>
-    <p class="reveal" style="color: #555;margin-bottom: 10px; font-size: 40px; color: #194e2f;">07 de janeiro de 2027 </p>
-    <p class="reveal" style="font-size: 18px;"> Reserve este dia para celebrar conosco. </p>
+    <p class="reveal" style="color: #555; margin-bottom: 10px; font-size: 30px; color: #194e2f;">07 de janeiro de 2027</p>
+    <p class="reveal" style="font-size: 18px;">Reserve este dia para celebrar conosco.</p>
     <div class="countdown-grid reveal">
       <div class="countdown-box reveal">
         <div class="countdown-number reveal" id="days">139</div>
@@ -404,7 +473,6 @@
     </div>
   </section>
 
-  <!-- CARDS SECTION -->
   <section class="cards-section">
     <div class="section-subtitle reveal">Tudo para este dia</div>
     <h2 class="section-title reveal">Cada detalhe, preparado com carinho</h2>
@@ -417,13 +485,13 @@
       </div>
 
       <div class="card-item reveal" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.85) 100%), url('https://github.com/MaxwilliamSena/repositorio-de-imagens/blob/main/e69bc527-01de-41bd-b04d-e4db3c9e09c6.jpg?raw=true'); background-size: cover; background-position: center;">
-        <h3>Data, hora &amp; local</h3>
+        <h3>Data, hora & local</h3>
         <p>Confira todos os detalhes para chegar ao Espaço Jardim das Oliveiras.</p>
         <a href="https://google.com/maps/search/api=1&query=Espaço+Jardim+das+Oliveiras" target="_blank" class="botao-cards" style="margin-right: 215px; font-size: 8px;">VER INFORMAÇÕES</a>
       </div>
 
       <div class="card-item reveal" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.85) 100%), url('https://github.com/MaxwilliamSena/repositorio-de-imagens/blob/main/06886b58-dded-41a6-b88a-283fbcb3c61f.jpg?raw=true'); background-size: cover; background-position: center;">
-        <h3>Etiqueta &amp; dress code</h3>
+        <h3>Etiqueta & dress code</h3>
         <p>Tudo o que você precisa saber para aproveitar com conforto e elegância.</p>
         <a href="#dresscode" class="botao-cards" style="margin-right: 235px; font-size: 8px;">VER DRESS CODE</a>
       </div>
@@ -442,7 +510,6 @@
     </div>
   </section>
 
-  <!-- STORY SECTION -->
   <section class="story-section">
     <div class="story-container">
       <div class="section-subtitle reveal" style="padding-right: 800px;">Capítulo Um</div>
@@ -453,7 +520,6 @@
     </div>
   </section>
 
-  <!-- PROMISE SECTION -->
   <section class="promise-section">
     <div class="promise-box">
       <div class="hero-tag reveal">Nossa Promessa</div>
@@ -465,29 +531,25 @@
     </div>
   </section>
 
-  <!-- RSVP CONFIRMATION SECTION -->
   <section id="rsvp" class="countdown-section reveal">
     <div class="section-subtitle reveal">Sua presença é muito importante</div>
     <h2 class="section-title reveal">Confirmação de Presença</h2>
     <div class="rsvp-box reveal">
       <label class="reveal" style="font-size: 0.85rem; font-weight: bold; text-transform: uppercase;">Digite o Código do seu Convite:</label>
-      <input class="reveal" type="text" id="inviteCode" class="rsvp-input" placeholder="EX: MAXGIO" />
-      <button class="reveal" onclick="confirmar()" class="btn-gold" style="background-color: #112d1d; width: 100%;">Acessar Convite</button>
+      <input class="reveal rsvp-input" type="text" id="inviteCode" placeholder="EX: MAXGIO" />
+      <button class="reveal btn-gold" onclick="confirmar()" style="background-color: #112d1d; width: 100%;">Acessar Convite</button>
       <div id="rsvpStatus" style="margin-top: 15px; font-weight: bold; color: #112d1d;"></div>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <p>Com todo o nosso carinho</p>
     <p style="color: #ffffff; text-transform: none; margin-top: 5px;">Esperamos você para viver esse dia conosco.</p>
-    <h2>Maxwilliam &amp; Giovanna</h2>
+    <h2>Maxwilliam & Giovanna</h2>
     <p style="margin-top: 15px;">22 DE MAIO DE 2027</p>
   </footer>
 
-  <!-- SCRIPT COUNTDOWN & RSVP -->
   <script>
-    // Contador em tempo real para 22/05/2027
     const targetDate = new Date("May 22, 2027 17:00:00").getTime();
 
     function updateCountdown() {
@@ -509,7 +571,6 @@
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
-    // Validador de Código RSVP
     function confirmar() {
       const input = document.getElementById("inviteCode").value.trim();
       const status = document.getElementById("rsvpStatus");
@@ -521,27 +582,26 @@
         status.innerText = "Por favor, digite o código do seu convite.";
       }
     }
+
     document.addEventListener('DOMContentLoaded', () => {
-  const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.15 // Dispara quando 15% do elemento estiver visível na tela
-  };
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.15
+      };
 
-  const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        // Deixa de observar para a animação rodar apenas uma vez
-        observer.unobserve(entry.target);
-      }
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      const elementsToAnimate = document.querySelectorAll('.reveal');
+      elementsToAnimate.forEach(el => observer.observe(el));
     });
-  }, observerOptions);
-
-  // Seleciona todos os elementos com a classe .reveal
-  const elementsToAnimate = document.querySelectorAll('.reveal');
-  elementsToAnimate.forEach(el => observer.observe(el));
-});
   </script>
 </body>
 </html>
