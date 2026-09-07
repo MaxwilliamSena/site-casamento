@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maxwilliam & Giovanna | Confirmação de Presença</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* RESET E CONFIGURAÇÕES GERAIS */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    body {
+      background-color: #F7F6F0;
+      color: #1A382A;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* BARRA SUPERIOR / HEADER */
+    .top-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      background: linear-gradient(to bottom, rgba(17, 37, 27, 0.8), transparent);
+    }
+
+    .brand-name {
+      font-family: 'Playfair Display', serif;
+      color: #ffffff;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+    }
+
+    .btn-header {
+      background-color: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      backdrop-filter: blur(5px);
+      transition: all 0.3s ease;
+    }
+
+    .btn-header:hover {
+      background-color: #ffffff;
+      color: #11251B;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      position: relative;
+      width: 100%;
+      padding: 120px 20px 80px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #ffffff;
+      background: linear-gradient(rgba(17, 37, 27, 0.85), rgba(17, 37, 27, 0.90)), 
+                  url('https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+    }
+
+    .hero-tag {
+      font-size: 0.75rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+      opacity: 0.85;
+      font-weight: 300;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 400;
+      margin-bottom: 15px;
+      line-height: 1.2;
+      max-width: 800px;
+    }
+
+    .hero-couple {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 25px;
+      font-weight: 400;
+    }
+
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-style: italic;
+      margin-bottom: 40px;
+      opacity: 0.9;
+      font-weight: 300;
+      max-width: 600px;
+    }
+
+    .btn-action-main {
+      display: inline-block;
+      padding: 14px 32px;
+      background-color: #ffffff;
+      color: #11251B;
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-radius: 30px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-action-main:hover {
+      transform: translateY(-2px);
+      background-color: #F7F6F0;
+    }
+
+    /* SEÇÃO PRINCIPAL DE CONFIRMAÇÃO */
+    .section-rsvp {
+      padding: 80px 20px;
+      background-color: #F7F6F0;
+      flex-grow: 1;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .section-tag {
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      display: block;
+      color: #1A382A;
+      opacity: 0.75;
+      font-weight: 600;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 400;
+      margin-bottom: 15px;
+      color: #11251B;
+    }
+
+    .section-desc {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: #555;
+      margin-bottom: 40px;
+      font-weight: 300;
+    }
+
+    /* CARDS DO FLUXO (ETAPAS) */
+    .rsvp-card {
+      background-color: #ffffff;
+      border-radius: 28px;
+      padding: 50px 40px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 400;
+      margin-bottom: 15px;
+      color: #11251B;
+    }
+
+    .card-subtitle {
+      font-size: 0.88rem;
+      color: #666;
+      margin-bottom: 35px;
+      line-height: 1.5;
+      font-weight: 300;
+    }
+
+    /* ETAPA 1: INPUT DO CÓDIGO */
+    .form-group {
+      text-align: left;
+      margin-bottom: 30px;
+    }
+
+    .form-label {
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: #11251B;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 16px 0;
+      border: none;
+      border-bottom: 1px solid #ccc;
+      font-family: inherit;
+      font-size: 1.1rem;
+      outline: none;
+      background: transparent;
+      color: #11251B;
+      transition: border-color 0.3s;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .form-input:focus {
+      border-bottom-color: #11251B;
+    }
+
+    .error-msg {
+      color: #C0392B;
+      font-size: 0.8rem;
+      margin-top: 10px;
+      text-align: left;
+    }
+
+    /* ETAPA 2: LISTA DE MEMBROS DA FAMÍLIA */
+    .family-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      color: #11251B;
+    }
+
+    .members-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 25px;
+    }
+
+    .member-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      border: 1px solid #E5E5E5;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+
+    .member-item:hover {
+      border-color: #11251B;
+    }
+
+    .member-item.selected {
+      border-color: #11251B;
+      background-color: rgba(17, 37, 27, 0.03);
+    }
+
+    .member-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .member-checkbox {
+      width: 22px;
+      height: 22px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+
+    .member-item.selected .member-checkbox {
+      background-color: #11251B;
+      border-color: #11251B;
+      color: #ffffff;
+    }
+
+    .member-name {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #11251B;
+      text-align: left;
+    }
+
+    .counter-text {
+      font-size: 0.8rem;
+      color: #666;
+      margin-bottom: 25px;
+    }
+
+    /* ETAPA 3: REVISÃO DA CONFIRMAÇÃO */
+    .summary-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-bottom: 30px;
+      text-align: left;
+    }
+
+    .summary-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px dashed #E0E0E0;
+    }
+
+    .summary-name {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #11251B;
+    }
+
+    .summary-status {
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .status-presente {
+      color: #11251B;
+    }
+
+    .status-ausente {
+      color: #C0392B;
+    }
+
+    /* ETAPA 4: SUCESSO */
+    .success-icon {
+      width: 50px;
+      height: 50px;
+      background-color: #11251B;
+      color: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px auto;
+      font-size: 1.3rem;
+    }
+
+    /* BOTÕES DE NAVEGAÇÃO / AÇÃO NOS CARDS */
+    .btn-group-step {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 16px;
+      background-color: #11251B;
+      color: #ffffff;
+      border: none;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-submit:hover {
+      background-color: #1A382A;
+    }
+
+    .btn-secondary {
+      padding: 14px 28px;
+      background-color: transparent;
+      color: #11251B;
+      border: 1px solid #11251B;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-secondary:hover {
+      background-color: rgba(17, 37, 27, 0.05);
+    }
+
+    .loading-msg {
+      font-size: 0.75rem;
+      color: #777;
+      margin-top: 15px;
+      font-style: italic;
+    }
+
+    /* FOOTER */
+    .footer-section {
+      background-color: #11251B;
+      color: #ffffff;
+      padding: 40px 20px;
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* =========================================================
+       AJUSTES EXCLUSIVOS PARA DISPOSITIVOS MÓVEIS (MENOR QUE 768px)
+       ========================================================= */
+    @media (max-width: 768px) {
+      .top-header {
+        padding: 15px 20px;
+      }
+
+      .brand-name {
+        font-size: 0.95rem;
+      }
+
+      .btn-header {
+        padding: 6px 14px;
+        font-size: 0.65rem;
+      }
+
+      .hero {
+        padding: 100px 15px 60px 15px;
+      }
+
+      .hero-title {
+        font-size: 1.8rem;
+      }
+
+      .hero-couple {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+      }
+
+      .hero-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 30px;
+      }
+
+      .section-rsvp {
+        padding: 50px 15px;
+      }
+
+      .section-title {
+        font-size: 1.7rem;
+      }
+
+      .rsvp-card {
+        padding: 30px 20px;
+        border-radius: 20px;
+      }
+
+      .card-title {
+        font-size: 1.4rem;
+      }
+
+      .card-subtitle {
+        font-size: 0.82rem;
+        margin-bottom: 25px;
+      }
+
+      .btn-group-step {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+      }
+
+      .btn-group-step .btn-secondary,
+      .btn-group-step .btn-submit {
+        width: 100% !important;
+      }
+
+      .member-item {
+        padding: 14px 15px;
+      }
+
+      .member-name {
+        font-size: 0.88rem;
+      }
+
+      .summary-item {
+        font-size: 0.85rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="top-header">
+    <span class="brand-name">Maxwilliam & Giovanna</span>
+    <a href="#rsvp" class="btn-header">Confirmar presença</a>
+  </header>
+
+  <section class="hero">
+    <span class="hero-tag">NOSSO CASAMENTO</span>
+    <h1 class="hero-title">Sua presença tornará este dia ainda mais especial</h1>
+    <h2 class="hero-couple">Maxwilliam & Giovanna</h2>
+    <p class="hero-subtitle">Será uma alegria celebrar este momento tão esperado ao lado de vocês.</p>
+    <a href="#rsvp" class="btn-action-main">CONFIRMAR PRESENÇA</a>
+  </section>
+
+  <section id="rsvp" class="section-rsvp">
+    <div class="container">
+      <span class="section-tag">CONFIRMAÇÃO DE PRESENÇA</span>
+      <h2 class="section-title">Você faz parte desse momento</h2>
+      <p class="section-desc">Digite o código exclusivo que está no seu convite para confirmar quem estará conosco.</p>
+
+      <div id="step-code" class="rsvp-card">
+        <h3 class="card-title">Sua presença torna nosso dia ainda mais especial</h3>
+        <p class="card-subtitle">Digite o código que está no seu convite para visualizar as pessoas da sua família.</p>
+
+        <form id="form-code" onsubmit="handleCodeSubmit(event)">
+          <div class="form-group">
+            <label class="form-label">CÓDIGO DO CONVITE</label>
+            <input type="text" id="invite-code-input" class="form-input" placeholder="Exemplo: MG001" required autocomplete="off">
+            <div id="error-message" class="error-msg hidden">Código não encontrado. Por favor, verifique e tente novamente.</div>
+          </div>
+          <button type="submit" class="btn-submit">CONTINUAR →</button>
+        </form>
+      </div>
+
+      <div id="step-select" class="rsvp-card hidden">
+        <span class="section-tag">ENCONTRAMOS SEU CONVITE</span>
+        <h3 class="family-name" id="family-title-text">Convidados</h3>
+        <p class="card-subtitle" style="margin-bottom: 20px;">Selecione as pessoas que estarão conosco.</p>
+
+        <div class="members-list" id="members-container"></div>
+
+        <div class="counter-text" id="counter-text">0 pessoas estarão presentes</div>
+
+        <div class="btn-group-step">
+          <button type="button" class="btn-secondary" onclick="goToStep('code')">VOLTAR</button>
+          <button type="button" class="btn-submit" style="width: auto; flex-grow: 1;" onclick="goToStep('review')">REVISAR CONFIRMAÇÃO</button>
+        </div>
+      </div>
+
+      <div id="step-review" class="rsvp-card hidden">
+        <span class="section-tag">UM ÚLTIMO OLHAR</span>
+        <h3 class="card-title">Confira sua confirmação</h3>
+        <p class="card-subtitle">Confira as pessoas selecionadas antes de registrar a presença.</p>
+
+        <div class="summary-list" id="summary-container"></div>
+
+        <div class="btn-group-step">
+          <button type="button" class="btn-secondary" onclick="goToStep('select')">EDITAR</button>
+          <button type="button" class="btn-submit" style="width: auto; flex-grow: 1;" id="btn-confirm-final" onclick="submitFinalConfirmation()">CONFIRMAR PRESENÇA</button>
+        </div>
+        <div id="loading-spinner" class="loading-msg hidden">Registrando sua confirmação com carinho...</div>
+      </div>
+
+      <div id="step-success" class="rsvp-card hidden">
+        <div class="success-icon">♡</div>
+        <h3 class="card-title">Presença confirmada! 🎉</h3>
+        <p class="card-subtitle" style="margin-bottom: 30px;">Obrigado por confirmar sua presença. Estamos muito felizes em celebrar esse momento com vocês.</p>
+        <button type="button" class="btn-secondary" onclick="resetForm()">CONFIRMAR OUTRO CONVITE</button>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer-section">
+    MAXWILLIAM & GIOVANNA
+  </footer>
+
+  <script>
+    // BASE DE DADOS COMPLETA DOS CONVITES
+    const inviteDatabase = {
+      "MG001": ["Apóstolo Marcelo", "Apóstola Valdenice", "Marcela", "Abisague", "Kathlem", "Zequinia"],
+      "MG002": ["Lindomar", "Saude", "Sara", "Ana Ester", "Luan"],
+      "MG003": ["Ana", "Josi"],
+      "MG004": ["Eduarda", "Emily", "Suelem"],
+      "MG005": ["Socorro", "Carlos"],
+      "MG006": ["Adelson", "Marisa", "Alice", "Ismael"],
+      "MG007": ["Renato", "Fabricia", "Heitor", "Heitor"],
+      "MG008": ["Fernanda", "Israel", "Aderson"],
+      "MG009": ["Vandreza", "Eduardo", "Elias", "Aryella"],
+      "MG010": ["Neide", "Esposo", "Nicolly", "Irlan"],
+      "MG011": ["Debora", "Gustavo"],
+      "MG012": ["Valdemiro", "Rejane"],
+      "MG013": ["Inez", "Sophia", "Max Nei", "David"],
+      "MG014": ["Maria", "Francisco", "Maxwell", "Fagna", "Rebouça", "Jhenifer"],
+      "MG015": ["Farliane", "Ribamar", "Ryan", "Hanry"],
+      "MG016": ["Kerolen", "Patrícia", "Márcia (Marido)", "Neia", "Geraldo", "Almerinda", "Perpétua"],
+      "MG017": ["Elisa", "Fran", "Jorgete", "Aninha", "Perpétua"],
+      "MG018": ["Lilico", "Morango", "France"],
+      "MG019": ["Nilson", "Suelen"],
+      "MG020": ["Juciney", "Natan"],
+      "MG021": ["Romario", "Jakeline"],
+      "MG022": ["Roseane", "Roberto"],
+      "MG023": ["Aldifran", "Marilucia"],
+      "MG024": ["Luiza"],
+      "MG025": ["Mariane", "Vicente"],
+      "MG026": ["Ederson", "Maria"],
+      "MG027": ["Guilherme", "Renata"],
+      "MG028": ["Pastora Ray"],
+      "MG029": ["Pastora Maria", "Pastor Carmo"],
+      "MG030": ["Nayme", "Ewerton"],
+      "MG031": ["Harley", "Isaque", "Kesia"],
+      "MG032": ["Caue"],
+      "MG033": ["Thalia", "Gabriel"],
+      "MG034": ["Rayssa"],
+      "MG035": ["Roneuane"],
+      "MG036": ["Paula", "Luanderson"],
+      "MG037": ["Thais", "Manoel"],
+      "MG038": ["Ricardo"],
+      "MG039": ["Caio"],
+      "MG040": ["Raissa Raquel", "Arthur"],
+      "MG041": ["Bruna"],
+      "MG042": ["Debora"],
+      "MG043": ["Vitoria"],
+      "MG044": ["Jessica"],
+      "MG045": ["Gabriel"],
+      "MG046": ["David"],
+      "MG047": ["Gustavo"],
+      "MG048": ["Apóstolo Ancelmo", "Apóstola Rose"],
+      "MG049": ["Elias", "Pedro"],
+      "MG050": ["Dioneide"],
+      "MG051": ["Marcia"],
+      "MG052": ["Irinilson", "Cleiberson", "Marcelina"]
+    };
+
+    let currentFamilyData = null;
+
+    // GERENCIADOR DE ETAPAS
+    function goToStep(stepName) {
+      document.getElementById('step-code').classList.add('hidden');
+      document.getElementById('step-select').classList.add('hidden');
+      document.getElementById('step-review').classList.add('hidden');
+      document.getElementById('step-success').classList.add('hidden');
+
+      if (stepName === 'code') {
+        document.getElementById('step-code').classList.remove('hidden');
+      } else if (stepName === 'select') {
+        renderMembersList();
+        document.getElementById('step-select').classList.remove('hidden');
+      } else if (stepName === 'review') {
+        renderReviewList();
+        document.getElementById('step-review').classList.remove('hidden');
+      } else if (stepName === 'success') {
+        document.getElementById('step-success').classList.remove('hidden');
+      }
+    }
+
+    // ETAPA 1: SUBMIT DO CÓDIGO
+    function handleCodeSubmit(event) {
+      event.preventDefault();
+      const rawInput = document.getElementById('invite-code-input').value.trim();
+      const errorEl = document.getElementById('error-message');
+      
+      // Limpa traços, espaços e converte para maiúsculo
+      const sanitizedCode = rawInput.replace(/[-_ ]/g, '').toUpperCase();
+
+      if (inviteDatabase[sanitizedCode]) {
+        errorEl.classList.add('hidden');
+        
+        // Mapeia os integrantes para a estrutura interna com status de seleção
+        const membersList = inviteDatabase[sanitizedCode].map((personName, index) => ({
+          id: index + 1,
+          name: personName,
+          selected: true // Por padrão já vem selecionado
+        }));
+
+        currentFamilyData = {
+          code: sanitizedCode,
+          members: membersList
+        };
+
+        document.getElementById('family-title-text').innerText = `Convite ${sanitizedCode}`;
+        goToStep('select');
+      } else {
+        errorEl.classList.remove('hidden');
+      }
+    }
+
+    // ETAPA 2: LISTAR E ALTERAR PRESENÇA INDIVIDUAL
+    function renderMembersList() {
+      const container = document.getElementById('members-container');
+      container.innerHTML = '';
+
+      currentFamilyData.members.forEach(member => {
+        const itemEl = document.createElement('div');
+        itemEl.className = `member-item ${member.selected ? 'selected' : ''}`;
+        itemEl.onclick = () => toggleMember(member.id);
+
+        itemEl.innerHTML = `
+          <div class="member-info">
+            <div class="member-checkbox">${member.selected ? '✓' : ''}</div>
+            <span class="member-name">${member.name}</span>
+          </div>
+          <div class="member-checkbox">${member.selected ? '☑' : '☐'}</div>
+        `;
+        container.appendChild(itemEl);
+      });
+
+      updateCounter();
+    }
+
+    function toggleMember(memberId) {
+      const member = currentFamilyData.members.find(m => m.id === memberId);
+      if (member) {
+        member.selected = !member.selected;
+        renderMembersList();
+      }
+    }
+
+    function updateCounter() {
+      const count = currentFamilyData.members.filter(m => m.selected).length;
+      document.getElementById('counter-text').innerText = `${count} ${count === 1 ? 'pessoa estará presente' : 'pessoas estarão presentes'}`;
+    }
+
+    // ETAPA 3: REVISÃO
+    function renderReviewList() {
+      const container = document.getElementById('summary-container');
+      container.innerHTML = '';
+
+      currentFamilyData.members.forEach(member => {
+        const itemEl = document.createElement('div');
+        itemEl.className = 'summary-item';
+
+        const statusClass = member.selected ? 'status-presente' : 'status-ausente';
+        const statusText = member.selected ? '✓ Presente' : '— Não participará';
+
+        itemEl.innerHTML = `
+          <span class="summary-name">${member.name}</span>
+          <span class="summary-status ${statusClass}">${statusText}</span>
+        `;
+        container.appendChild(itemEl);
+      });
+    }
+
+    // SUBMIT FINAL
+    function submitFinalConfirmation() {
+      const btn = document.getElementById('btn-confirm-final');
+      const spinner = document.getElementById('loading-spinner');
+
+      btn.disabled = true;
+      spinner.classList.remove('hidden');
+
+      setTimeout(() => {
+        btn.disabled = false;
+        spinner.classList.add('hidden');
+        goToStep('success');
+      }, 1200);
+    }
+
+    // REINICIAR
+    function resetForm() {
+      document.getElementById('form-code').reset();
+      document.getElementById('error-message').classList.add('hidden');
+      currentFamilyData = null;
+      goToStep('code');
+    }
+  </script>
+</body>
+</html>

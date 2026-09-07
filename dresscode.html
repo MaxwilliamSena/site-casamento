@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dress Code & Manual do Convidado | Maxwilliam & Giovanna</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* RESET & BASE */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    body {
+      background-color: #F7F6F0;
+      color: #1A382A;
+      overflow-x: hidden;
+    }
+
+    /* SEÇÃO HERO WITH VIDEO / IMG */
+    .hero {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      text-align: center;
+      color: #ffffff;
+    }
+
+    .hero-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      z-index: 1;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.65));
+      z-index: 2;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 800px;
+      padding: 0 20px;
+    }
+
+    .hero-subtitle-top {
+      font-size: 0.85rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      opacity: 0.9;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+
+    .hero-description-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-style: italic;
+      margin-bottom: 16px;
+    }
+
+    .hero-description {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      max-width: 650px;
+      margin: 0 auto 35px auto;
+      font-weight: 300;
+      opacity: 0.95;
+    }
+
+    .btn-orientacoes {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      background-color: #ffffff;
+      color: #1A382A;
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .btn-orientacoes:hover {
+      background-color: #F7F6F0;
+      transform: translateY(-2px);
+    }
+
+    /* ESTRUTURA DAS SEÇÕES */
+    .section-light {
+      background-color: #F7F6F0;
+      color: #1A382A;
+      padding: 80px 20px;
+    }
+
+    .section-dark {
+      background-color: #1A382A;
+      color: #ffffff;
+      padding: 80px 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .section-tag {
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      display: block;
+      opacity: 0.8;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 400;
+      margin-bottom: 25px;
+    }
+
+    .divider-icon {
+      margin: 20px 0 30px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0.7;
+    }
+
+    .section-intro-text {
+      font-size: 1rem;
+      line-height: 1.7;
+      max-width: 700px;
+      margin: 0 auto 50px auto;
+      font-weight: 300;
+    }
+
+    /* CARTÃO DO TRAJE ESCOLHIDO */
+    .traje-card {
+      background-color: #ffffff;
+      border-radius: 24px;
+      padding: 50px 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+      max-width: 850px;
+      margin: 0 auto 50px auto;
+    }
+
+    .traje-tag {
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #1A382A;
+      opacity: 0.7;
+      margin-bottom: 10px;
+    }
+
+    .traje-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: #1A382A;
+      margin-bottom: 20px;
+    }
+
+    .traje-desc {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #4A5568;
+      max-width: 650px;
+      margin: 0 auto 30px auto;
+    }
+
+    .pills-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .pill {
+      border: 1px solid #1A382A;
+      border-radius: 20px;
+      padding: 6px 18px;
+      font-size: 0.8rem;
+      color: #1A382A;
+      background: transparent;
+    }
+
+    /* GRID DE IMAGENS */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .photo-card {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      height: 380px;
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .photo-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 30px 20px 20px 20px;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+      color: #ffffff;
+      text-align: center;
+      font-size: 0.9rem;
+      font-weight: 300;
+    }
+
+    /* PALETA DE CORES CIRCULAR */
+    .palette-grid {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .color-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 130px;
+    }
+
+    .color-circle {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .color-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+
+    .color-hex {
+      font-size: 0.75rem;
+      opacity: 0.7;
+      text-transform: lowercase;
+    }
+
+    /* CARTÃO INFORMATIVO DESTACADO (PADRINHOS) */
+    .padrinhos-alert {
+      background-color: #234736;
+      border-radius: 30px;
+      padding: 16px 30px;
+      display: inline-block;
+      margin: 40px auto 30px auto;
+      font-size: 0.85rem;
+      color: #ffffff;
+      font-weight: 300;
+    }
+
+    /* CARDS DE QUADRADO ARREDONDADO (DICAS/EVITAR) */
+    .cards-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    .card-rounded-dark {
+      background-color: #234736;
+      border-radius: 20px;
+      padding: 35px 25px;
+      text-align: left;
+    }
+
+    .card-rounded-light {
+      background-color: #ffffff;
+      border-radius: 20px;
+      padding: 30px 25px;
+      text-align: left;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+    }
+
+    .card-icon {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      display: block;
+    }
+
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+    }
+
+    .card-desc {
+      font-size: 0.85rem;
+      line-height: 1.6;
+      opacity: 0.85;
+      font-weight: 300;
+    }
+
+    /* GRID DE DICAS COM 4 CARDS */
+    .cards-grid-4 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      max-width: 950px;
+      margin: 0 auto;
+    }
+
+    /* SEÇÃO FINAL DE AGRADECIMENTO */
+    .final-section {
+      background-color: #1A382A;
+      color: #ffffff;
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+    .couple-names {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      margin-top: 40px;
+      font-weight: 400;
+    }
+
+    /* ANIMAÇÃO REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      will-change: opacity, transform;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================================================
+       AJUSTES EXCLUSIVOS PARA DISPOSITIVOS MÓVEIS (MENOR QUE 768px)
+       ========================================================= */
+    @media (max-width: 768px) {
+      .hero {
+        padding: 0 15px;
+      }
+
+      .hero-subtitle-top {
+        font-size: 0.75rem;
+        letter-spacing: 2px;
+      }
+
+      .hero-title {
+        font-size: 1.8rem;
+        margin-bottom: 16px;
+      }
+
+      .hero-description-title {
+        font-size: 1.3rem;
+      }
+
+      .hero-description {
+        font-size: 0.88rem;
+        margin-bottom: 25px;
+      }
+
+      .section-light, 
+      .section-dark,
+      .final-section {
+        padding: 50px 15px;
+      }
+
+      .section-title {
+        font-size: 1.7rem;
+        margin-bottom: 15px;
+      }
+
+      .section-intro-text {
+        font-size: 0.9rem;
+        margin-bottom: 30px;
+      }
+
+      .traje-card {
+        padding: 30px 18px;
+        border-radius: 20px;
+        margin-bottom: 30px;
+      }
+
+      .traje-title {
+        font-size: 1.6rem;
+      }
+
+      .traje-desc {
+        font-size: 0.88rem;
+      }
+
+      .pill {
+        padding: 5px 12px;
+        font-size: 0.75rem;
+      }
+
+      .photo-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .photo-card {
+        height: 260px;
+      }
+
+      .palette-grid {
+        gap: 15px;
+        justify-content: space-around;
+      }
+
+      .color-item {
+        width: 42%;
+        margin-bottom: 10px;
+      }
+
+      .color-circle {
+        width: 75px;
+        height: 75px;
+        margin-bottom: 8px;
+      }
+
+      .color-name {
+        font-size: 0.88rem;
+      }
+
+      .padrinhos-alert {
+        width: 100%;
+        padding: 14px 18px;
+        font-size: 0.8rem;
+        border-radius: 20px;
+      }
+
+      .cards-grid-2,
+      .cards-grid-4 {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+
+      .card-rounded-dark,
+      .card-rounded-light {
+        padding: 24px 20px;
+      }
+
+      .card-title {
+        font-size: 1.15rem;
+      }
+
+      .card-desc {
+        font-size: 0.82rem;
+      }
+
+      .couple-names {
+        font-size: 1.8rem;
+        margin-top: 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero" style="background-image: url('https://github.com/MaxwilliamSena/repositorio-de-imagens/blob/main/floresta_pinheiros_apenas_03%201.png?raw=true'); background-size: cover; background-position: center;">
+    
+    <div class="hero-overlay"></div>
+    
+    <div class="hero-content reveal">
+      <p class="hero-subtitle-top reveal">MAXWILLIAM & GIOVANNA</p>
+      <h1 class="hero-title reveal">Dress Code & Manual do Convidado</h1>
+      <p class="hero-description-title reveal">Para aproveitar o nosso dia ao máximo 🤍</p>
+      <p class="hero-description reveal">
+        Queremos que nosso casamento seja um momento leve, especial e cheio de boas memórias. Por isso, deixamos algumas orientações com muito carinho para que todos possam aproveitar cada momento conosco.
+      </p>
+      <a href="#como-se-vestir" class="btn-orientacoes reveal">
+        ↓ VER ORIENTAÇÕES
+      </a>
+    </div>
+  </header>
+
+  <section id="como-se-vestir" class="section-light reveal">
+    <div class="container reveal">
+      <span class="section-tag reveal">DRESS CODE</span>
+      <h2 class="section-title reveal">Como se vestir</h2>
+      
+      <div class="divider-icon reveal">👑</div>
+      
+      <p class="section-intro-text reveal">
+        Escolhemos um dress code que combina com a luz do dia, a beleza da natureza e a atmosfera leve da nossa celebração.
+      </p>
+
+      <div class="traje-card reveal">
+        <span class="traje-tag reveal">O TRAJE ESCOLHIDO É</span>
+        <h3 class="traje-title reveal">Esporte Fino Leve</h3>
+        <p class="traje-desc reveal">
+          Como nosso casamento acontecerá durante o dia, queremos uma produção elegante, leve e confortável, adequada ao horário, ao clima e ao ambiente da celebração.
+        </p>
+        <div class="pills-container reveal">
+          <span class="pill reveal">Elegância</span>
+          <span class="pill reveal">Leveza</span>
+          <span class="pill reveal">Conforto</span>
+          <span class="pill reveal">Sofisticação</span>
+        </div>
+      </div>
+
+      <div class="photo-grid reveal">
+        <div class="photo-card reveal">
+          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80" alt="Inspiração traje masculino e feminino">
+          <div class="photo-overlay reveal">Peças frescas, tecidos fluídos e elegância natural</div>
+        </div>
+        <div class="photo-card reveal">
+          <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80" alt="Inspiração grupo de convidados">
+          <div class="photo-overlay reveal">Produções sofisticadas, sem excessos e prontas para celebrar</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-light reveal" style="padding-top: 0;">
+    <div class="container">
+      <span class="section-tag reveal">INSPIRAÇÃO DE CORES</span>
+      <h2 class="section-title reveal">Nossa paleta</h2>
+      <p class="section-intro-text reveal">
+        Estas são as cores que inspiram o nosso grande dia. Você pode usá-las como referência para compor um look harmonioso com a celebração.
+      </p>
+
+      <div class="palette-grid reveal">
+        <div class="color-item reveal">
+          <div class="color-circle reveal" style="background-color: #1B3B2B;"></div>
+          <span class="color-name reveal">Verde Floresta</span>
+          <span class="color-hex reveal">#1b3b2b</span>
+        </div>
+        <div class="color-item reveal">
+          <div class="color-circle reveal" style="background-color: #223725;"></div>
+          <span class="color-name reveal">Verde Natural</span>
+          <span class="color-hex reveal">#223725</span>
+        </div>
+        <div class="color-item reveal">
+          <div class="color-circle reveal" style="background-color: #A1AF90;"></div>
+          <span class="color-name reveal">Verde Claro</span>
+          <span class="color-hex reveal">#A1AF90</span>
+        </div>
+        <div class="color-item reveal">
+          <div class="color-circle reveal" style="background-color: #C3C6A7;"></div>
+          <span class="color-name reveal">Dourado Suave</span>
+          <span class="color-hex reveal">#C3C6A7</span>
+        </div>
+        <div class="color-item reveal">
+          <div class="color-circle reveal" style="background-color: #ffffff; border: 1px solid #ddd;"></div>
+          <span class="color-name reveal">Off-White</span>
+          <span class="color-hex reveal">#ffffff</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-dark">
+    <div class="container reveal">
+      <span class="section-tag">UMA PALETA ESPECIAL</span>
+      <h2 class="section-title">Paleta dos Padrinhos</h2>
+      <p class="section-intro-text">
+        Se você faz parte do nosso time de padrinhos, esta é a paleta reservada para vocês.
+      </p>
+
+      <div class="palette-grid reveal">
+        <div class="color-item reveal">
+          <div class="color-circle reveal" style="background-color: #99A478;"></div>
+          <span class="color-name reveal">Oliva Profundo</span>
+          <span class="color-hex reveal">#99A478</span>
+        </div>
+        <div class="color-item reveal">
+          <div class="color-circle reveal" style="background-color: #808C66;"></div>
+          <span class="color-name reveal">Sálvia Dourada</span>
+          <span class="color-hex reveal">#808C66</span>
+        </div>
+        <div class="color-item reveal">
+          <div class="color-circle reveal" style="background-color: #E8DDC8;"></div>
+          <span class="color-name reveal">Rosé Queimado</span>
+          <span class="color-hex reveal">#E8DDC8</span>
+        </div>
+        <div class="color-item reveal">
+          <div class="color-circle reveal" style="background-color: #59622E;"></div>
+          <span class="color-name reveal">Champagne</span>
+          <span class="color-hex reveal">#59622E</span>
+        </div>
+      </div>
+
+      <div class="padrinhos-alert reveal">
+        As cores desta paleta são destinadas exclusivamente aos padrinhos e madrinhas.
+      </div>
+
+      <div class="cards-grid-2 reveal">
+        <div class="card-rounded-dark reveal">
+          <span class="card-icon reveal">👔</span>
+          <h3 class="card-title reveal">Para os padrinhos</h3>
+          <p class="card-desc reveal">Ternos leves ou combinações de alfaiataria nas cores definidas pelos noivos, com camisa clara e acessórios discretos.</p>
+        </div>
+        <div class="card-rounded-dark reveal">
+          <span class="card-icon reveal">👗</span>
+          <h3 class="card-title reveal">Para as madrinhas</h3>
+          <p class="card-desc reveal">Vestidos fluidos e elegantes dentro da paleta reservada, valorizando tecidos leves e caimentos naturais.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-light reveal">
+    <div class="container reveal">
+      <span class="section-tag reveal">COM MUITO CARINHO</span>
+      <h2 class="section-title reveal">O que pedimos para evitar</h2>
+      <p class="section-intro-text reveal">
+        Pequenos cuidados para que todos se sintam confortáveis e o nosso momento seja ainda mais especial.
+      </p>
+
+      <div class="cards-grid-2 reveal">
+        <div class="card-rounded-light reveal">
+          <span class="card-icon reveal">🤍</span>
+          <h3 class="card-title reveal">Branco e tons próximos</h3>
+          <p class="card-desc reveal">Pedimos gentilmente que não utilizem roupas brancas, off-white, marfim ou tons muito próximos ao branco.</p>
+        </div>
+        <div class="card-rounded-light reveal">
+          <span class="card-icon reveal">👕</span>
+          <h3 class="card-title reveal">Informal demais</h3>
+          <p class="card-desc reveal">Evitem roupas excessivamente informais, como chinelos, camisetas e roupas de praia.</p>
+        </div>
+        <div class="card-rounded-light reveal">
+          <span class="card-icon reveal">❄️</span>
+          <h3 class="card-title reveal">Produções muito pesadas</h3>
+          <p class="card-desc reveal">Como nosso casamento acontecerá durante a tarde, sugerimos roupas elegantes e confortáveis, adequadas ao clima e à ocasião.</p>
+        </div>
+        <div class="card-rounded-light reveal">
+          <span class="card-icon reveal">💥</span>
+          <h3 class="card-title reveal">Excesso de destaque</h3>
+          <p class="card-desc reveal">Evitem produções extremamente chamativas que possam desviar a atenção do momento principal.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-light" style="padding-top: 0;">
+    <div class="container reveal">
+      <span class="section-tag reveal">PARA VIVER CADA INSTANTE</span>
+      <h2 class="section-title reveal">Durante a cerimônia</h2>
+
+      <div class="cards-grid-4 reveal">
+        <div class="card-rounded-light reveal">
+          <span class="card-icon reveal">⏰</span>
+          <h3 class="card-title reveal">Cheguem com antecedência</h3>
+          <p class="card-desc reveal">Para que possamos começar no horário e viver a cerimônia desde o primeiro momento.</p>
+        </div>
+        <div class="card-rounded-light reveal">
+          <span class="card-icon reveal">🔕</span>
+          <h3 class="card-title reveal">Celulares no silencioso</h3>
+          <p class="card-desc reveal">Pedimos que mantenham os celulares no silencioso durante a cerimônia.</p>
+        </div>
+        <div class="card-rounded-light reveal">
+          <span class="card-icon reveal">🚶</span>
+          <h3 class="card-title reveal">Evitem circular</h3>
+          <p class="card-desc reveal">Principalmente durante a entrada da noiva e os momentos mais importantes.</p>
+        </div>
+        <div class="card-rounded-light reveal">
+          <span class="card-icon reveal">📷</span>
+          <h3 class="card-title reveal">Deixem os fotógrafos trabalharem</h3>
+          <p class="card-desc reveal">Deixem que nossos fotógrafos registrem os momentos especiais sem interferências.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-dark">
+    <div class="container reveal">
+      <span class="section-tag reveal">DEPOIS DO SIM</span>
+      <h2 class="section-title reveal">Durante a festa</h2>
+
+      <div class="cards-grid-2 reveal">
+        <div class="card-rounded-dark reveal">
+          <span class="card-icon reveal">🎵</span>
+          <h3 class="card-title reveal">Aproveitem muito</h3>
+          <p class="card-desc reveal">Divirtam-se, dancem, cantem e aproveitem cada momento conosco.</p>
+        </div>
+        <div class="card-rounded-dark reveal">
+          <span class="card-icon reveal">🤍</span>
+          <h3 class="card-title reveal">Respeito sempre</h3>
+          <p class="card-desc reveal">Evitem excessos que possam causar desconforto aos demais convidados.</p>
+        </div>
+        <div class="card-rounded-dark reveal">
+          <span class="card-icon reveal">🏡</span>
+          <h3 class="card-title reveal">Cuidemos do espaço</h3>
+          <p class="card-desc reveal">Respeitem o espaço, os profissionais e os outros convidados.</p>
+        </div>
+        <div class="card-rounded-dark reveal">
+          <span class="card-icon reveal">✨</span>
+          <h3 class="card-title reveal">Sua presença importa</h3>
+          <p class="card-desc reveal">Caso tenham confirmado presença, contamos com vocês. Cada lugar foi preparado com muito carinho.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="final-section">
+    <div class="container">
+      <span class="section-tag">COM TODO O NOSSO CARINHO</span>
+      <h2 class="section-title">O mais importante</h2>
+      
+      <p class="section-intro-text" style="max-width: 650px;">
+        Seu presente mais valioso é sua presença. Queremos celebrar este dia ao lado das pessoas que amamos e criar lembranças inesquecíveis juntos.<br><br>
+        Obrigado por fazer parte da nossa história. Estamos ansiosos para compartilhar este momento com você!
+      </p>
+
+      <h3 class="couple-names">Maxwilliam & Giovanna</h3>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.15
+      };
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      const elementsToAnimate = document.querySelectorAll('.reveal');
+      elementsToAnimate.forEach(el => observer.observe(el));
+    });
+  </script>
+
+</body>
+</html>

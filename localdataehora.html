@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maxwilliam & Giovanna | Confirmação de Presença</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* RESET & BASE */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    body {
+      background-color: #F7F6F0;
+      color: #1A382A;
+      overflow-x: hidden;
+    }
+
+    /* BARRA SUPERIOR / HEADER FIXO */
+    .top-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.5), transparent);
+    }
+
+    .brand-name {
+      font-family: 'Playfair Display', serif;
+      color: #ffffff;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+    }
+
+    .btn-header {
+      background-color: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      backdrop-filter: blur(5px);
+      transition: all 0.3s ease;
+    }
+
+    .btn-header:hover {
+      background-color: #ffffff;
+      color: #1A382A;
+    }
+
+    /* SEÇÃO HERO COM IMAGEM DE FUNDO E CONTADOR */
+    .hero {
+      position: relative;
+      width: 100vw;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #ffffff;
+      padding: 100px 20px 60px 20px;
+      background: linear-gradient(rgba(17, 37, 27, 0.75), rgba(17, 37, 27, 0.85)), 
+                  url('https://github.com/MaxwilliamSena/repositorio-de-imagens/blob/main/file_000000003df4820eb530a5399dbe08e5.png?raw=true') center/cover no-repeat;
+    }
+
+    .hero-tag {
+      font-size: 0.75rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      opacity: 0.85;
+      font-weight: 300;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.2rem;
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-style: italic;
+      margin-bottom: 50px;
+      opacity: 0.9;
+      font-weight: 300;
+    }
+
+    /* CONTADOR REGRESSIVO */
+    .countdown-container {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .countdown-box {
+      background-color: rgba(255, 255, 255, 0.92);
+      color: #1A382A;
+      border-radius: 16px;
+      padding: 20px 25px;
+      min-width: 110px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    .countdown-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 400;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .countdown-label {
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.7;
+      font-weight: 600;
+    }
+
+    .btn-ver-info {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      background-color: #ffffff;
+      color: #1A382A;
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-radius: 30px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+    }
+
+    .btn-ver-info:hover {
+      transform: translateY(-2px);
+      background-color: #F7F6F0;
+    }
+
+    /* ELEMENTOS DECORATIVOS FLUTUANTES */
+    .deco-icon {
+      position: absolute;
+      opacity: 0.2;
+      pointer-events: none;
+    }
+
+    /* ESTILO GERAL DAS SEÇÕES */
+    .section-light {
+      background-color: #F7F6F0;
+      color: #1A382A;
+      padding: 90px 20px;
+    }
+
+    .section-dark {
+      background-color: #11251B;
+      color: #ffffff;
+      padding: 90px 20px;
+      position: relative;
+    }
+
+    .container {
+      max-width: 950px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .section-tag {
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      display: block;
+      opacity: 0.75;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 400;
+      margin-bottom: 40px;
+    }
+
+    .section-desc {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      max-width: 650px;
+      margin: -20px auto 40px auto;
+      font-weight: 300;
+      opacity: 0.9;
+    }
+
+    .icon-badge {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background-color: rgba(26, 56, 42, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px auto;
+      color: #1A382A;
+    }
+
+    /* CARD QUANDO (DATA E HORA) */
+    .card-quando {
+      background-color: #ffffff;
+      border-radius: 24px;
+      padding: 50px 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    .card-quando-dia {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      margin-bottom: 8px;
+    }
+
+    .card-quando-data {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 30px;
+      font-weight: 300;
+    }
+
+    .card-quando-hora {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: #1A382A;
+    }
+
+    /* SEÇÃO ONDE (LOCALIZAÇÃO COM CARD E IMAGEM) */
+    .onde-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 30px;
+      align-items: center;
+      text-align: left;
+      background-color: #ffffff;
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    }
+
+    .onde-img-container {
+      position: relative;
+      height: 380px;
+      border-radius: 18px;
+      overflow: hidden;
+    }
+
+    .onde-img-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .onde-img-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 20px;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      color: #ffffff;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-style: italic;
+    }
+
+    .onde-info {
+      padding: 10px 20px;
+    }
+
+    .onde-nome {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+
+    .onde-endereco {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: #666;
+      margin-bottom: 25px;
+      font-weight: 300;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .btn-outline {
+      border: 1px solid #1A382A;
+      color: #1A382A;
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      background-color: #1A382A;
+      color: #ffffff;
+    }
+
+    .btn-solid-dark {
+      background-color: #11251B;
+      color: #ffffff;
+      border: 1px solid #11251B;
+    }
+
+    .btn-solid-dark:hover {
+      background-color: #1A382A;
+    }
+
+    /* SEÇÃO COMO CHEGAR (CARRO & UBER) */
+    .cards-2-col {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 30px;
+    }
+
+    .card-opcao {
+      background-color: #ffffff;
+      border-radius: 20px;
+      padding: 35px 25px;
+      text-align: left;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+    }
+
+    .card-opcao-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background-color: #1A382A;
+      margin-bottom: 20px;
+    }
+
+    .card-opcao-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+    }
+
+    .card-opcao-desc {
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: #666;
+      margin-bottom: 25px;
+      font-weight: 300;
+    }
+
+    /* TRANSPORTE COMPARTILHADO (ÔNIBUS) */
+    .bus-container {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 30px;
+      align-items: center;
+      margin-top: 40px;
+    }
+
+    .bus-img {
+      width: 100%;
+      height: 320px;
+      border-radius: 20px;
+      object-fit: cover;
+    }
+
+    .bus-details {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      text-align: left;
+    }
+
+    .bus-info-box {
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      padding: 16px 20px;
+    }
+
+    .bus-info-tag {
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.7;
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    .bus-info-val {
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    /* BANNER ALERTA / INFORMAÇÃO IMPORTANTES */
+    .alert-card {
+      background-color: #ffffff;
+      border-radius: 20px;
+      padding: 30px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      text-align: left;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+      max-width: 850px;
+      margin: 50px auto 0 auto;
+    }
+
+    .alert-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background-color: #F7F6F0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .alert-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      margin-bottom: 6px;
+    }
+
+    .alert-desc {
+      font-size: 0.85rem;
+      line-height: 1.5;
+      color: #666;
+      font-weight: 300;
+    }
+
+    /* MAPA VIRTUAL */
+    .map-card {
+      background-color: #ffffff;
+      border-radius: 24px;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+      margin-top: 30px;
+    }
+
+    .map-preview {
+      height: 280px;
+      border-radius: 16px;
+      background-color: #E2E8E4;
+      background-image: radial-gradient(#1A382A 0.75px, transparent 0.75px);
+      background-size: 16px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .map-pin {
+      width: 44px;
+      height: 44px;
+      background-color: #11251B;
+      color: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .map-badge {
+      background-color: #ffffff;
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+
+    /* FOOTER / SEÇÃO FINAL */
+    .footer-section {
+      background-color: #11251B;
+      color: #ffffff;
+      padding: 100px 20px 80px 20px;
+      text-align: center;
+    }
+
+    .footer-names {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      margin-top: 15px;
+      font-weight: 400;
+    }
+
+    /* ANIMAÇÃO DE REVELAÇÃO */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      will-change: opacity, transform;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RESPONSIVIDADE PARA DISPOSITIVOS MÓVEIS (MENOR QUE 768px) */
+    @media (max-width: 768px) {
+      .top-header {
+        padding: 15px 20px;
+      }
+
+      .hero {
+        padding: 120px 15px 60px 15px;
+      }
+
+      .hero-title {
+        font-size: 2.2rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 30px;
+      }
+
+      .countdown-container {
+        gap: 8px;
+      }
+
+      .countdown-box {
+        padding: 15px 12px;
+        min-width: 75px;
+      }
+
+      .countdown-number {
+        font-size: 1.8rem;
+      }
+
+      .countdown-label {
+        font-size: 0.55rem;
+      }
+
+      .section-light, 
+      .section-dark {
+        padding: 60px 15px;
+      }
+
+      .section-title {
+        font-size: 1.9rem;
+        margin-bottom: 25px;
+      }
+
+      .onde-grid, 
+      .bus-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 18px;
+      }
+
+      .onde-img-container {
+        height: 240px;
+      }
+
+      .onde-info {
+        padding: 0;
+      }
+
+      .onde-nome {
+        font-size: 1.6rem;
+      }
+
+      .btn-group {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .btn-action {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .cards-2-col {
+        grid-template-columns: 1fr;
+      }
+
+      .bus-img {
+        height: 220px;
+      }
+
+      .alert-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .footer-names {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="top-header">
+    <span class="brand-name reveal">Maxwilliam & Giovanna</span>
+    <a href="#informacoes" class="btn-header reveal">INFORMAÇÕES</a>
+  </header>
+
+  <section class="hero reveal">
+    <span class="hero-tag reveal">NOSSO GRANDE DIA</span>
+    <h1 class="hero-title reveal">Maxwilliam & Giovanna</h1>
+    <p class="hero-subtitle reveal">Estamos esperando por você para celebrar o início da nossa nova história.</p>
+
+    <div class="countdown-container reveal">
+      <div class="countdown-box reveal">
+        <div class="countdown-number reveal" id="days">111</div>
+        <div class="countdown-label reveal">DIAS</div>
+      </div>
+      <div class="countdown-box reveal">
+        <div class="countdown-number reveal" id="hours">19</div>
+        <div class="countdown-label reveal">HORAS</div>
+      </div>
+      <div class="countdown-box reveal">
+        <div class="countdown-number reveal" id="minutes">03</div>
+        <div class="countdown-label reveal">MINUTOS</div>
+      </div>
+      <div class="countdown-box reveal">
+        <div class="countdown-number reveal" id="seconds">58</div>
+        <div class="countdown-label reveal">SEGUNDOS</div>
+      </div>
+    </div>
+
+    <a href="#quando" class="btn-ver-info reveal">↓ VER INFORMAÇÕES</a>
+  </section>
+
+  <section id="quando" class="section-light">
+    <div class="container reveal">
+      <div class="icon-badge reveal">🗓️</div>
+      <span class="section-tag reveal">RESERVE ESTE MOMENTO</span>
+      <h2 class="section-title reveal">Quando</h2>
+
+      <div class="card-quando reveal">
+        <h3 class="card-quando-dia reveal">Sábado</h3>
+        <p class="card-quando-data reveal">12 de dezembro de 2026</p>
+        <p class="card-quando-hora reveal">Às 16:30</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="informacoes" class="section-light" style="padding-top: 0;">
+    <div class="container reveal">
+      <div class="onde-grid reveal">
+        <div class="onde-img-container reveal">
+          <img class="reveal" src="https://github.com/MaxwilliamSena/repositorio-de-imagens/blob/main/WhatsApp%20Image%202026-08-22%20at%2023.43.52.jpeg?raw=true" alt="Imagem do local do casamento">
+          <div class="onde-img-overlay reveal">Onde a nossa história floresce</div>
+        </div>
+
+        <div class="onde-info reveal">
+          <span class="section-tag reveal" style="text-align: left;">NOS ENCONTRAREMOS AQUI</span>
+          <h2 class="section-title reveal" style="text-align: left; margin-bottom: 15px;">Onde</h2>
+          <h3 class="onde-nome reveal">Chácara São Francisco</h3>
+          <p class="onde-endereco reveal">
+            R. Sovama, 700 - Tarumã Açu<br>
+            Manaus - AM, 69023-460
+          </p>
+
+          <div class="btn-group reveal">
+            <button onclick="copiarEndereco()" class="btn-action btn-outline reveal" id="btnCopiar">📋 COPIAR ENDEREÇO</button>
+            <a href="https://www.google.com.br/maps/place/Ch%C3%A1cara+S%C3%A3o+P/@-2.9797619,-60.0594909,86m/data=!3m1!1e3!4m6!3m5!1s0x926c17001a7fed3f:0x3d4e897f5eb9ebd6!8m2!3d-2.9799199!4d-60.0594768!16s%2Fg%2F11msg4jh_d?entry=ttu&g_ep=EgoyMDI2MDgxOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn-action btn-solid-dark reveal">🧭 ABRIR NO GOOGLE MAPS</a>
+            <a href="https://www.waze.com/pt-BR/live-map/directions/br/am/r.-sovama,-700?to=place.ChIJpTvGyMcXbJIRz1TEI5Lt3oE" target="_blank" class="btn-action btn-solid-dark reveal">🧭 ABRIR NO WAZE</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-light reveal" style="padding-top: 0;">
+    <div class="container reveal">
+      <span class="section-tag reveal">SEU CAMINHO ATÉ NÓS</span>
+      <h2 class="section-title reveal">Como chegar</h2>
+      <p class="section-desc reveal">
+        Para facilitar a chegada de todos, disponibilizaremos algumas opções para chegar ao local do nosso casamento.
+      </p>
+
+      <div class="cards-2-col reveal">
+        <div class="card-opcao reveal">
+          <div class="card-opcao-icon reveal"></div>
+          <h3 class="card-opcao-title reveal">Carro</h3>
+          <p class="card-opcao-desc reveal">Abra sua rota preferida e siga com tranquilidade até o local da celebração.</p>
+          <div class="btn-group reveal">
+            <a href="https://www.google.com.br/maps/place/Ch%C3%A1cara+S%C3%A3o+P/@-2.9797619,-60.0594909,109m/data=!3m1!1e3!4m6!3m5!1s0x926c17001a7fed3f:0x3d4e897f5eb9ebd6!8m2!3d-2.9799199!4d-60.0594768!16s%2Fg%2F11msg4jh_d?entry=ttu&g_ep=EgoyMDI2MDgxOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn-action btn-solid-dark reveal">GOOGLE MAPS</a>
+            <a href="https://www.waze.com/pt-BR/live-map/directions/br/am/r.-sovama,-700?to=place.ChIJpTvGyMcXbJIRz1TEI5Lt3oE" target="_blank" class="btn-action btn-solid-dark reveal">WAZE</a>
+          </div>
+        </div>
+
+        <div class="card-opcao reveal">
+          <div class="card-opcao-icon reveal"></div>
+          <h3 class="card-opcao-title reveal">Uber</h3>
+          <p class="card-opcao-desc reveal">Ao utilizar o Uber, você poderá usar o endereço do evento como destino.</p>
+          <a href="https://m.uber.com/go/product-selection?drop%5B0%5D=%7B%22addressLine1%22%3A%22R.%20Sovama%2C%20700%22%2C%22addressLine2%22%3A%22-%20Tarum%C3%A3%20A%C3%A7u%2C%20Manaus%20-%20AM%22%2C%22id%22%3A%22ChIJpTvGyMcXbJIRz1TEI5Lt3oE%22%2C%22source%22%3A%22SEARCH%22%2C%22latitude%22%3A-2.9799454%2C%22longitude%22%3A-60.059498000000005%2C%22provider%22%3A%22google_places%22%7D" target="_blank" class="btn-action btn-solid-dark reveal" style="width: 100%; justify-content: center;">IR DE UBER</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-dark">
+    <div class="container reveal">
+      <span class="section-tag reveal">UMA CHEGADA COMPARTILHADA</span>
+      <h2 class="section-title reveal">Transporte para o nosso grande dia</h2>
+      <p class="section-desc reveal">
+        Para facilitar o deslocamento dos nossos convidados, disponibilizaremos um ônibus que sairá de um ponto de encontro determinado até o local do casamento.
+      </p>
+
+      <div class="bus-container reveal">
+        <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80" alt="Ônibus de transporte" class="bus-img reveal">
+
+        <div class="bus-details reveal">
+          <div class="bus-info-box reveal">
+            <span class="bus-info-tag reveal">📍 PONTO DE SAÍDA</span>
+            <span class="bus-info-val reveal">R. Iracy Neves, 81 - Mauazinho, Manaus - AM, 69075-490</span>
+          </div>
+
+          <div class="bus-info-box reveal">
+            <span class="bus-info-tag reveal">⏰ HORÁRIO DE SAÍDA</span>
+            <span class="bus-info-val reveal">15:00</span>
+          </div>
+
+          <div class="bus-info-box reveal">
+            <span class="bus-info-tag reveal">📍 DESTINO</span>
+            <span class="bus-info-val reveal">Chácara São Francisco</span>
+          </div>
+
+          <a href="https://maps.google.com/?q=R.+Iracy+Neves,+81+-+Mauazinho,+Manaus+-+AM,+69075-490" target="_blank" class="btn-action btn-outline reveal" style="color: #ffffff; border-color: rgba(255,255,255,0.4); justify-content: center; margin-top: 10px;">
+            VER PONTO DE SAÍDA NO MAPA
+          </a>
+        </div>
+      </div>
+
+      <div class="alert-card reveal">
+        <div class="alert-icon reveal">🕒</div>
+        <div>
+          <h4 class="alert-title reveal">Informação importante</h4>
+          <p class="alert-desc reveal">O ônibus terá saída única no horário informado. Recomendamos chegar ao ponto de encontro com antecedência para evitar imprevistos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-light">
+    <div class="container reveal">
+      <span class="section-tag reveal">NOSSO PONTO DE ENCONTRO</span>
+      <h2 class="section-title reveal">Local do casamento</h2>
+
+      <div class="map-card reveal">
+        <div class="map-preview reveal">
+          <div class="map-pin reveal">📍</div>
+          <div class="map-badge reveal">Nos vemos aqui</div>
+        </div>
+
+        <div class="reveal" style="margin-top: 25px;">
+          <h3 class="onde-nome reveal" style="font-size: 1.6rem;">Chácara São Francisco</h3>
+          <p class="onde-endereco reveal" style="margin-bottom: 20px;">R. Sovama, 700 - Tarumã Açu, Manaus - AM, 69023-460</p>
+          
+          <div class="btn-group reveal" style="justify-content: center;">
+            <a href="https://www.google.com.br/maps/place/Ch%C3%A1cara+S%C3%A3o+P/@-2.9797619,-60.0594909,109m/data=!3m1!1e3!4m6!3m5!1s0x926c17001a7fed3f:0x3d4e897f5eb9ebd6!8m2!3d-2.9799199!4d-60.0594768!16s%2Fg%2F11msg4jh_d?entry=ttu&g_ep=EgoyMDI2MDgxOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn-action btn-solid-dark reveal">GOOGLE MAPS</a>
+            <a href="https://www.waze.com/pt-BR/live-map/directions/br/am/r.-sovama,-700?to=place.ChIJpTvGyMcXbJIRz1TEI5Lt3oE" target="_blank" class="btn-action btn-solid-dark reveal">WAZE</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer-section">
+    <div class="container">
+      <span class="section-tag">COM TODO O NOSSO CARINHO,</span>
+      <h2 class="section-title" style="margin-bottom: 10px;">Esperamos você,</h2>
+      <h3 class="footer-names">Maxwilliam & Giovanna ♡</h3>
+    </div>
+  </footer>
+
+  <script>
+    const targetDate = new Date("Dec 12, 2026 16:30:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const difference = targetDate - now;
+
+      if (difference > 0) {
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+        document.getElementById("days").innerText = String(days).padStart(3, '0');
+        document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+        document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+        document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+      }
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    function copiarEndereco() {
+      const endereco = "R. Sovama, 700 - Tarumã Açu, Manaus - AM, 69023-460";
+      navigator.clipboard.writeText(endereco).then(() => {
+        const btn = document.getElementById("btnCopiar");
+        btn.innerText = "✓ ENDEREÇO COPIADO!";
+        setTimeout(() => {
+          btn.innerText = "📋 COPIAR ENDEREÇO";
+        }, 3000);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.15
+      };
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      const elementsToAnimate = document.querySelectorAll('.reveal');
+      elementsToAnimate.forEach(el => observer.observe(el));
+    });
+  </script>
+
+</body>
+</html>
