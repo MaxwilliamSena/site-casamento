@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maxwilliam & Giovanna | Lista de Presentes</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  
+  <!-- QRCode.js Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'wedding-bg': '#F7F6F0',
+            'wedding-green': '#1A382A',
+            'wedding-green-dark': '#11251B',
+            'wedding-gold': '#E2C98A',
+            'wedding-gold-hover': '#C8AA62',
+          },
+          fontFamily: {
+            sans: ['Montserrat', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+            garamond: ['Cormorant Garamond', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar & Base adjustments */
+    html { scroll-behavior: smooth; }
+    body { background-color: #F7F6F0; }
+    
+    /* Smooth Transitions for Modal */
+    .modal-enter { opacity: 0; pointer-events: none; }
+    .modal-enter-active { opacity: 1; pointer-events: auto; }
+    .modal-scale { transform: translateY(20px) scale(0.95); transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1); }
+    .modal-enter-active .modal-scale { transform: translateY(0) scale(1); }
+  </style>
+</head>
+<body class="font-sans text-wedding-green-dark min-h-screen flex flex-col reveal">
+
+  <header class="fixed top-0 left-0 w-full px-6 py-4 md:px-10 md:py-5 flex justify-between items-center z-50 bg-wedding-green-dark/90 backdrop-blur-md shadow-lg ">
+    <span class="font-serif text-white text-lg md:text-xl tracking-wider">Maxwilliam & Giovanna</span>
+    <nav class="flex gap-4">
+      <a href="index.html" class="bg-white/10 text-white border border-white/40 px-4 py-2 rounded-full text-xs tracking-widest uppercase no-underline transition-all duration-300 hover:bg-white hover:text-wedding-green-dark">RSVP</a>
+    </nav>
+  </header>
+
+  <section class="relative w-full pt-40 pb-24 px-5 flex flex-col items-center justify-center text-center text-white bg-wedding-green-dark bg-cover bg-center bg-no-repeat bg-[linear-gradient(rgba(17,37,27,0.85),rgba(17,37,27,0.92)),url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1920&q=80')]">
+    <span class="reveal text-xs md:text-sm tracking-[0.25em] uppercase mb-6 opacity-90 font-light text-wedding-gold">Nossa História Continua</span>
+    <h1 class="reveal font-serif text-4xl md:text-5xl lg:text-6xl font-normal mb-4 leading-tight max-w-4xl">Lista de Presentes</h1>
+    <p class="reveal font-garamond text-xl md:text-2xl italic mb-10 opacity-90 font-light max-w-2xl">
+      Sua presença é o nosso maior presente! Se desejar nos abençoar de forma prática, preparamos estas cotas para nossa Lua de Mel e novo lar.
+    </p>
+  </section>
+
+  <section class="py-20 px-5 flex-grow bg-wedding-bg">
+    <div class="max-w-6xl mx-auto text-center reveal">
+      <span class="text-xs tracking-[0.2em] uppercase mb-3 block text-wedding-green opacity-80 font-semibold">Cotas Virtuais</span>
+      <h2 class="font-serif text-3xl md:text-4xl font-normal mb-12 text-wedding-green-dark">Escolha como nos presentear</h2>
+      
+      <!-- Container dinâmico via JS -->
+      <div id="gifts-container" class="reveal grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
+        <!-- JS insere os cards aqui -->
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-wedding-green-dark text-white py-10 px-5 text-center font-serif text-lg tracking-widest border-t border-white/10">
+    MAXWILLIAM & GIOVANNA
+  </footer>
+
+  <div id="pix-modal" class=" revealfixed inset-0 w-full h-full bg-black/75 backdrop-blur-sm z-[1000] flex items-center justify-center p-4 transition-all duration-300 modal-enter">
+    
+    <div class="reveal modal-scale bg-white w-full max-w-lg rounded-3xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
+      
+      <!-- Cabeçalho Modal -->
+      <div class="reveal bg-wedding-green-dark text-white px-6 py-5 flex justify-between items-center">
+        <h3 class="font-serif text-xl">Presentear os Noivos</h3>
+        <button onclick="closePixModal()" class="text-white text-3xl leading-none opacity-80 hover:opacity-100 transition-opacity">&times;</button>
+      </div>
+
+      <!-- Corpo Modal -->
+      <div class="reveal p-6 overflow-y-auto">
+        
+        <!-- Resumo do Item -->
+        <div class="reveal flex items-center gap-4 p-4 bg-wedding-bg rounded-2xl mb-6 border border-black/5">
+          <img id="modal-gift-img" src="" alt="Presente" class="w-16 h-16 rounded-xl object-cover shadow-sm">
+          <div>
+            <h4 id="modal-gift-title" class="font-serif text-lg text-wedding-green-dark leading-tight">Nome</h4>
+            <p id="modal-gift-price" class="text-lg font-bold text-wedding-green-dark mt-1">R$ 0,00</p>
+          </div>
+        </div>
+
+        <!-- Passo 1: Formulário do Convidado -->
+        <div id="modal-step-form" class="reveal space-y-5">
+          <div>
+            <label class="text-xs tracking-widest uppercase font-semibold text-wedding-green-dark block mb-2">Seu Nome Completo</label>
+            <input type="text" id="gift-guest-name" class="w-full p-4 border border-gray-300 rounded-xl bg-gray-50 focus:bg-white focus:border-wedding-green-dark outline-none transition-all font-sans" placeholder="Para os noivos saberem quem presenteou" required>
+          </div>
+
+          <div class="mt-4 reveal">
+            <label class="text-xs tracking-widest uppercase font-semibold text-wedding-green-dark block mb-2">Mensagem (Opcional)</label>
+            <textarea id="gift-guest-message" rows="3" class="w-full p-4 border border-gray-300 rounded-xl bg-gray-50 focus:bg-white focus:border-wedding-green-dark outline-none transition-all font-sans" placeholder="Deixe um recado especial para o casal..."></textarea>
+          </div>
+
+          <button type="button" onclick="generatePixTransaction()" class="w-full py-4 bg-[#32BCAD] hover:bg-[#2AA395] text-white rounded-full text-sm font-semibold tracking-widest uppercase transition-colors flex justify-center items-center gap-2 mt-4 shadow-lg shadow-[#32BCAD]/30">
+            ⚡ Gerar Pix
+          </button>
+        </div>
+
+        <!-- Passo 2: Pagamento Pix (QR Code + Copia e Cola) -->
+        <div id="modal-step-pix" class="reveal hidden flex-col items-center">
+          <p class="text-sm text-gray-600 mb-4 text-center">Escaneie o QR Code ou copie o código para pagar no seu banco.</p>
+
+          <div class="reveal flex flex-col items-center justify-center p-5 bg-gray-50 border border-gray-200 rounded-2xl w-full mb-5">
+            <div id="qrcode-box" class="reveal p-3 bg-white rounded-xl shadow-sm mb-4"></div>
+            <span class="text-xs font-bold text-wedding-green-dark mb-2 uppercase tracking-wide">Código Copia e Cola:</span>
+            <div id="pix-copia-cola-text" class="w-full bg-white border border-dashed border-gray-400 rounded-lg p-3 font-mono text-xs text-gray-700 break-all select-all text-center"></div>
+          </div>
+
+          <div class="reveal w-full space-y-3">
+            <button type="button" onclick="copyPixCode()" class="w-full py-4 bg-wedding-green-dark hover:bg-wedding-green text-white rounded-full text-xs font-semibold tracking-widest uppercase transition-colors flex justify-center items-center gap-2">
+              📋 Copiar Código Pix
+            </button>
+            <button type="button" onclick="redirectToBankApp()" class="w-full py-4 bg-[#32BCAD] hover:bg-[#2AA395] text-white rounded-full text-xs font-semibold tracking-widest uppercase transition-colors flex justify-center items-center gap-2">
+              🏦 Abrir App do Banco
+            </button>
+            <button type="button" onclick="closePixModal()" class="w-full py-3 bg-transparent border border-wedding-green-dark text-wedding-green-dark hover:bg-black/5 rounded-full text-xs font-semibold tracking-widest uppercase transition-colors mt-2">
+              Concluído
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 translate-y-24 bg-wedding-green-dark text-white px-6 py-3 rounded-full text-sm shadow-xl border border-wedding-gold opacity-0 transition-all duration-300 pointer-events-none z-[2000]">
+    Código Pix copiado com sucesso!
+  </div>
+
+  <script>
+    // BASE DE DADOS DOS PRESENTES
+    const giftList = [
+      {
+        id: 1,
+        title: "Jantar Romântico na Lua de Mel",
+        category: "Lua de Mel",
+        price: 150.00,
+        image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80",
+        description: "Um jantar inesquecível à beira-mar com brinde à nossa união."
+      },
+      {
+        id: 2,
+        title: "Passeio de Barco ao Pôr do Sol",
+        category: "Passeio",
+        price: 250.00,
+        image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80",
+        description: "Experiência relaxante explorando praias deslumbrantes."
+      },
+      {
+        id: 3,
+        title: "Café da Manhã na Cama (Hotel)",
+        category: "Lua de Mel",
+        price: 100.00,
+        image: "https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=600&q=80",
+        description: "Mimo especial para começar o dia da melhor forma possível."
+      },
+      {
+        id: 4,
+        title: "Cota para Passagens Aéreas",
+        category: "Cota Principal",
+        price: 500.00,
+        image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=600&q=80",
+        description: "Ajude os noivos a voarem alto rumo ao destino dos sonhos."
+      },
+      {
+        id: 5,
+        title: "Dia de Spa e Relaxamento para o Casal",
+        category: "Bem-estar",
+        price: 350.00,
+        image: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=600&q=80",
+        description: "Massagem revigorante e momentos de tranquilidade pós-casamento."
+      },
+      {
+        id: 6,
+        title: "Equipando a Cozinha do Novo Lar",
+        category: "Novo Lar",
+        price: 200.00,
+        image: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=600&q=80",
+        description: "Eletrodomésticos e utensílios para a cozinha dos recém-casados."
+      }
+    ];
+
+    let selectedGift = null;
+    let generatedPixCode = "";
+
+    function renderGifts() {
+      const container = document.getElementById('gifts-container');
+      container.innerHTML = '';
+
+      giftList.forEach(gift => {
+        const card = document.createElement('div');
+        card.className = "bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-black/5 transition-all duration-300 transform hover:-translate-y-2 cursor-pointer flex flex-col group";
+        card.onclick = () => openPixModal(gift);
+
+        card.innerHTML = `
+          <div class="relative w-full h-56 overflow-hidden bg-gray-100">
+            <img src="${gift.image}" alt="${gift.title}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <span class="absolute top-4 left-4 bg-wedding-green-dark/90 backdrop-blur-sm text-white text-[10px] px-3 py-1.5 rounded-full uppercase tracking-wider">
+              ${gift.category}
+            </span>
+          </div>
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="font-serif text-xl font-semibold text-wedding-green-dark mb-2">${gift.title}</h3>
+            <p class="text-sm text-gray-500 leading-relaxed mb-6 flex-grow">${gift.description}</p>
+            <div class="flex justify-between items-center pt-4 border-t border-gray-100">
+              <span class="text-xl font-bold text-wedding-green-dark">R$ ${gift.price.toFixed(2).replace('.', ',')}</span>
+              <button class="bg-wedding-green-dark group-hover:bg-wedding-gold text-white px-5 py-2 rounded-full text-[10px] font-bold tracking-widest uppercase transition-colors">
+                Presentear
+              </button>
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function openPixModal(gift) {
+      selectedGift = gift;
+      document.getElementById('modal-gift-title').innerText = gift.title;
+      document.getElementById('modal-gift-price').innerText = `R$ ${gift.price.toFixed(2).replace('.', ',')}`;
+      document.getElementById('modal-gift-img').src = gift.image;
+
+      document.getElementById('gift-guest-name').value = '';
+      document.getElementById('gift-guest-message').value = '';
+      
+      document.getElementById('modal-step-form').classList.remove('hidden');
+      document.getElementById('modal-step-pix').classList.add('hidden');
+      document.getElementById('modal-step-pix').classList.remove('flex');
+
+      const modal = document.getElementById('pix-modal');
+      modal.classList.add('modal-enter-active');
+    }
+
+    function closePixModal() {
+      const modal = document.getElementById('pix-modal');
+      modal.classList.remove('modal-enter-active');
+    }
+
+    function generateStaticPixCode(chavePix, nomeBeneficiario, cidade, valor, descricao) {
+      function emv(id, value) {
+        const len = value.length.toString().padStart(2, '0');
+        return `${id}${len}${value}`;
+      }
+
+      const gui = emv('00', 'br.gov.bcb.pix');
+      const key = emv('01', chavePix);
+      const merchantAccount = emv('26', gui + key);
+      const categoryCode = emv('52', '0000');
+      const currency = emv('53', '986');
+      const amount = emv('54', valor.toFixed(2));
+      const country = emv('58', 'BR');
+      const merchantName = emv('59', nomeBeneficiario.substring(0, 25));
+      const merchantCity = emv('60', cidade.substring(0, 15));
+      const txId = emv('05', 'CASAMENTO');
+      const additionalData = emv('62', txId);
+
+      const payloadBase = `000201${merchantAccount}${categoryCode}${currency}${amount}${country}${merchantName}${merchantCity}${additionalData}6304`;
+
+      function crc16(str) {
+        let crc = 0xFFFF;
+        for (let i = 0; i < str.length; i++) {
+          crc ^= str.charCodeAt(i) << 8;
+          for (let j = 0; j < 8; j++) {
+            if ((crc & 0x8000) !== 0) {
+              crc = ((crc << 1) ^ 0x1021) & 0xFFFF;
+            } else {
+              crc = (crc << 1) & 0xFFFF;
+            }
+          }
+        }
+        return crc.toString(16).toUpperCase().padStart(4, '0');
+      }
+
+      return payloadBase + crc16(payloadBase);
+    }
+
+    function generatePixTransaction() {
+      const guestName = document.getElementById('gift-guest-name').value.trim();
+      if (!guestName) {
+        showToast("⚠️ Digite seu nome para prosseguir");
+        document.getElementById('gift-guest-name').focus();
+        return;
+      }
+
+      // IMPORTANTE: Troque pelos dados REAIS dos noivos
+      const chavePixNoivos = "maxwilliam.giovanna@casamento.com.br"; // E-mail, CPF, Telefone ou Chave Aleatória
+      const nomeBeneficiario = "MAXWILLIAM E GIOVANNA";
+      const cidade = "MANAUS";
+
+      generatedPixCode = generateStaticPixCode(
+        chavePixNoivos,
+        nomeBeneficiario,
+        cidade,
+        selectedGift.price,
+        selectedGift.title
+      );
+
+      const qrContainer = document.getElementById('qrcode-box');
+      qrContainer.innerHTML = '';
+      new QRCode(qrContainer, {
+        text: generatedPixCode,
+        width: 160,
+        height: 160,
+        colorDark: "#11251B",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.M
+      });
+
+      document.getElementById('pix-copia-cola-text').innerText = generatedPixCode;
+
+      document.getElementById('modal-step-form').classList.add('hidden');
+      document.getElementById('modal-step-pix').classList.remove('hidden');
+      document.getElementById('modal-step-pix').classList.add('flex');
+    }
+
+    function copyPixCode() {
+      if (!generatedPixCode) return;
+      
+      // Fallback moderno e seguro para cópia
+      navigator.clipboard.writeText(generatedPixCode).then(() => {
+        showToast("✓ Código Pix copiado com sucesso!");
+      }).catch(() => {
+        // Fallback antigo
+        const tempInput = document.createElement("input");
+        tempInput.value = generatedPixCode;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand("copy");
+        document.body.removeChild(tempInput);
+        showToast("✓ Código Pix copiado com sucesso!");
+      });
+    }
+
+    function redirectToBankApp() {
+      copyPixCode();
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+      
+      if (isMobile) {
+        setTimeout(() => {
+          window.location.href = "pix://";
+        }, 500);
+      } else {
+        showToast("No computador? Copie o código e pague no web banking!");
+      }
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.innerText = message;
+      toast.classList.remove('opacity-0', 'translate-y-24');
+      
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'translate-y-24');
+      }, 3500);
+    }
+
+    // Inicializa a renderização
+    window.onload = () => {
+      renderGifts();
+
+        // ANIMAÇÃO REVEAL AO ROLAR A PÁGINA
+  document.addEventListener('DOMContentLoaded', () => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.15
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    const elementsToAnimate = document.querySelectorAll('.reveal');
+    elementsToAnimate.forEach(el => observer.observe(el));
+  });
+    };
+  </script>
+</body>
+</html>
