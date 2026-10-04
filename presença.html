@@ -602,193 +602,285 @@
   </footer>
 
   <script>
-    // BASE DE DADOS COMPLETA DOS CONVITES
-    const inviteDatabase = {
-      "MG001": ["Apóstolo Marcelo", "Apóstola Valdenice", "Marcela", "Abisague", "Kathlem", "Zequinia"],
-      "MG002": ["Lindomar", "Saude", "Sara", "Ana Ester", "Luan"],
-      "MG003": ["Ana", "Josi"],
-      "MG004": ["Eduarda", "Emily", "Suelem"],
-      "MG005": ["Socorro", "Carlos"],
-      "MG006": ["Adelson", "Marisa", "Alice", "Ismael"],
-      "MG007": ["Renato", "Fabricia", "Heitor", "Heitor"],
-      "MG008": ["Fernanda", "Israel", "Aderson"],
-      "MG009": ["Vandreza", "Eduardo", "Elias", "Aryella"],
-      "MG010": ["Neide", "Esposo", "Nicolly", "Irlan"],
-      "MG011": ["Debora", "Gustavo"],
-      "MG012": ["Valdemiro", "Rejane"],
-      "MG013": ["Inez", "Sophia", "Max Nei", "David"],
-      "MG014": ["Maria", "Francisco", "Maxwell", "Fagna", "Rebouça", "Jhenifer"],
-      "MG015": ["Farliane", "Ribamar", "Ryan", "Hanry"],
-      "MG016": ["Kerolen", "Patrícia", "Márcia (Marido)", "Neia", "Geraldo", "Almerinda", "Perpétua"],
-      "MG017": ["Elisa", "Fran", "Jorgete", "Aninha", "Perpétua"],
-      "MG018": ["Lilico", "Morango", "France"],
-      "MG019": ["Nilson", "Suelen"],
-      "MG020": ["Juciney", "Natan"],
-      "MG021": ["Romario", "Jakeline"],
-      "MG022": ["Roseane", "Roberto"],
-      "MG023": ["Aldifran", "Marilucia"],
-      "MG024": ["Luiza"],
-      "MG025": ["Mariane", "Vicente"],
-      "MG026": ["Ederson", "Maria"],
-      "MG027": ["Guilherme", "Renata"],
-      "MG028": ["Pastora Ray"],
-      "MG029": ["Pastora Maria", "Pastor Carmo"],
-      "MG030": ["Nayme", "Ewerton"],
-      "MG031": ["Harley", "Isaque", "Kesia"],
-      "MG032": ["Caue"],
-      "MG033": ["Thalia", "Gabriel"],
-      "MG034": ["Rayssa"],
-      "MG035": ["Roneuane"],
-      "MG036": ["Paula", "Luanderson"],
-      "MG037": ["Thais", "Manoel"],
-      "MG038": ["Ricardo"],
-      "MG039": ["Caio"],
-      "MG040": ["Raissa Raquel", "Arthur"],
-      "MG041": ["Bruna"],
-      "MG042": ["Debora"],
-      "MG043": ["Vitoria"],
-      "MG044": ["Jessica"],
-      "MG045": ["Gabriel"],
-      "MG046": ["David"],
-      "MG047": ["Gustavo"],
-      "MG048": ["Apóstolo Ancelmo", "Apóstola Rose"],
-      "MG049": ["Elias", "Pedro"],
-      "MG050": ["Dioneide"],
-      "MG051": ["Marcia"],
-      "MG052": ["Irinilson", "Cleiberson", "Marcelina"]
+  // 2. CONFIGURAÇÃO DO SUPABASE
+  const SUPABASE_URL = 'https://kfalxlehehbsrllxtxyx.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtmYWx4bGVoZWhic3JsbHh0eHl4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODg4MzE4NTQsImV4cCI6MjEwNDQwNzg1NH0.qmUJSl-d5nRpXv5RnPQRyFFn3IgrzcdMxcw6ep0pczQ';
+  
+  // Inicializa o cliente Supabase se a CDN estiver carregada
+  let _supabase = null;
+  if (typeof supabase !== 'undefined') {
+    _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  }
+
+  // BASE DE DADOS COMPLETA DOS CONVITES (FALLBACK)
+  const inviteDatabase = {
+    "MG001": ["Apóstolo Marcelo", "Apóstola Valdenice", "Marcela", "Abisague", "Kathlem", "Zequinia"],
+    "MG002": ["Lindomar", "Saude", "Sara", "Ana Ester", "Luan"],
+    "MG003": ["Ana", "Josi"],
+    "MG004": ["Eduarda", "Emily", "Suelem"],
+    "MG005": ["Socorro", "Carlos"],
+    "MG006": ["Adelson", "Marisa", "Alice", "Ismael"],
+    "MG007": ["Renato", "Fabricia", "Heitor", "Heitor"],
+    "MG008": ["Fernanda", "Israel", "Aderson"],
+    "MG009": ["Vandreza", "Eduardo", "Elias", "Aryella"],
+    "MG010": ["Neide", "Esposo", "Nicolly", "Irlan"],
+    "MG011": ["Debora", "Gustavo"],
+    "MG012": ["Valdemiro", "Rejane"],
+    "MG013": ["Inez", "Sophia", "Max Nei", "David"],
+    "MG014": ["Maria", "Francisco", "Maxwell", "Fagna", "Rebouça", "Jhenifer"],
+    "MG015": ["Farliane", "Ribamar", "Ryan", "Hanry"],
+    "MG016": ["Kerolen", "Patrícia", "Márcia","Marido da marcia", "Neia", "Geraldo", "Almerinda", "Perpétua"],
+    "MG017": ["Elisa", "Fran", "Jorgete", "Aninha", "Perpétua"],
+    "MG018": ["Lilico", "Morango", "France"],
+    "MG019": ["Nilson", "Suelen"],
+    "MG020": ["Juciney", "Natan"],
+    "MG021": ["Romario", "Jakeline"],
+    "MG022": ["Roseane", "Roberto"],
+    "MG023": ["Aldifran", "Marilucia"],
+    "MG024": ["Luiza"],
+    "MG025": ["Mariane", "Vicente"],
+    "MG026": ["Ederson", "Maria"],
+    "MG027": ["Guilherme", "Renata"],
+    "MG028": ["Pastora Ray"],
+    "MG029": ["Pastora Maria", "Pastor Carmo"],
+    "MG030": ["Nayme", "Ewerton"],
+    "MG031": ["Harley", "Isaque", "Kesia"],
+    "MG032": ["Caue"],
+    "MG033": ["Thalia", "Gabriel"],
+    "MG034": ["Rayssa"],
+    "MG035": ["Roneuane"],
+    "MG036": ["Paula", "Luanderson"],
+    "MG037": ["Thais", "Manoel"],
+    "MG038": ["Ricardo"],
+    "MG039": ["Caio"],
+    "MG040": ["Raissa Raquel", "Arthur"],
+    "MG041": ["Bruna"],
+    "MG042": ["Debora"],
+    "MG043": ["Vitoria"],
+    "MG044": ["Jessica"],
+    "MG045": ["Gabriel"],
+    "MG046": ["David"],
+    "MG047": ["Gustavo"],
+    "MG048": ["Apóstolo Ancelmo", "Apóstola Rose"],
+    "MG049": ["Elias", "Pedro"],
+    "MG050": ["Dioneide"],
+    "MG051": ["Marcia"],
+    "MG052": ["Irinilson", "Cleiberson", "Marcelina"]
+  };
+
+  let currentFamilyData = null;
+
+  // GERENCIADOR DE ETAPAS
+  function goToStep(stepName) {
+    document.getElementById('step-code').classList.add('hidden');
+    document.getElementById('step-select').classList.add('hidden');
+    document.getElementById('step-review').classList.add('hidden');
+    document.getElementById('step-success').classList.add('hidden');
+
+    if (stepName === 'code') {
+      document.getElementById('step-code').classList.remove('hidden');
+    } else if (stepName === 'select') {
+      renderMembersList();
+      document.getElementById('step-select').classList.remove('hidden');
+    } else if (stepName === 'review') {
+      renderReviewList();
+      document.getElementById('step-review').classList.remove('hidden');
+    } else if (stepName === 'success') {
+      document.getElementById('step-success').classList.remove('hidden');
+    }
+  }
+
+  // ETAPA 1: SUBMIT DO CÓDIGO (CONSULTA NO SUPABASE)
+  async function handleCodeSubmit(event) {
+    event.preventDefault();
+    const rawInput = document.getElementById('invite-code-input').value.trim();
+    const errorEl = document.getElementById('error-message');
+    
+    const sanitizedCode = rawInput.replace(/[-_ ]/g, '').toUpperCase();
+    let membersList = [];
+
+    if (_supabase) {
+      try {
+        // Busca na tabela 'convidados'
+        const { data: convidados, error } = await _supabase
+          .from('convidados')
+          .select('*')
+          .eq('codigo_convite', sanitizedCode);
+
+        if (!error && convidados && convidados.length > 0) {
+          membersList = convidados.map(item => ({
+            id: item.id,
+            name: item.nome,
+            statusOriginal: item.status,
+            selected: item.status === 'confirmado' || item.status === 'pendente' || !item.status
+          }));
+        }
+      } catch (err) {
+        console.warn('Erro ao conectar ao Supabase, recorrendo ao banco local:', err);
+      }
+    }
+
+    // Se não encontrou no Supabase ou se não houver conexão, tenta usar o objeto local (inviteDatabase)
+    if (membersList.length === 0 && inviteDatabase[sanitizedCode]) {
+      membersList = inviteDatabase[sanitizedCode].map((personName, index) => ({
+        id: index + 1,
+        name: personName,
+        statusOriginal: 'pendente',
+        selected: true
+      }));
+    }
+
+    if (membersList.length > 0) {
+      errorEl.classList.add('hidden');
+      currentFamilyData = {
+        code: sanitizedCode,
+        members: membersList
+      };
+
+      document.getElementById('family-title-text').innerText = `Convite ${sanitizedCode}`;
+      goToStep('select');
+    } else {
+      errorEl.classList.remove('hidden');
+    }
+  }
+
+  // ETAPA 2: LISTAR E ALTERAR PRESENÇA INDIVIDUAL
+  function renderMembersList() {
+    const container = document.getElementById('members-container');
+    container.innerHTML = '';
+
+    currentFamilyData.members.forEach(member => {
+      const itemEl = document.createElement('div');
+      itemEl.className = `member-item ${member.selected ? 'selected' : ''}`;
+      itemEl.onclick = () => toggleMember(member.id);
+
+      // Exibe uma tag visual indicando se a pessoa já tinha o status "confirmado" previamente no banco
+      const tagStatus = member.statusOriginal === 'confirmado' 
+        ? '<span style="font-size: 0.65rem; color: #11251B; font-weight: bold; background: #e0f0e5; padding: 2px 8px; border-radius: 10px; margin-left: 6px;">CONFIRMADO</span>' 
+        : '';
+
+      itemEl.innerHTML = `
+        <div class="member-info">
+          <div class="member-checkbox">${member.selected ? '✓' : ''}</div>
+          <span class="member-name">${member.name}${tagStatus}</span>
+        </div>
+        <div class="member-checkbox">${member.selected ? '☑' : '☐'}</div>
+      `;
+      container.appendChild(itemEl);
+    });
+
+    updateCounter();
+  }
+
+  function toggleMember(memberId) {
+    const member = currentFamilyData.members.find(m => m.id === memberId);
+    if (member) {
+      member.selected = !member.selected;
+      renderMembersList();
+    }
+  }
+
+  function updateCounter() {
+    const count = currentFamilyData.members.filter(m => m.selected).length;
+    document.getElementById('counter-text').innerText = `${count} ${count === 1 ? 'pessoa estará presente' : 'pessoas estarão presentes'}`;
+  }
+
+  // ETAPA 3: REVISÃO
+  function renderReviewList() {
+    const container = document.getElementById('summary-container');
+    container.innerHTML = '';
+
+    currentFamilyData.members.forEach(member => {
+      const itemEl = document.createElement('div');
+      itemEl.className = 'summary-item';
+
+      const statusClass = member.selected ? 'status-presente' : 'status-ausente';
+      const statusText = member.selected ? '✓ Presente' : '— Não participará';
+
+      itemEl.innerHTML = `
+        <span class="summary-name">${member.name}</span>
+        <span class="summary-status ${statusClass}">${statusText}</span>
+      `;
+      container.appendChild(itemEl);
+    });
+  }
+
+  // SUBMIT FINAL (SALVA NO SUPABASE)
+  async function submitFinalConfirmation() {
+    const btn = document.getElementById('btn-confirm-final');
+    const spinner = document.getElementById('loading-spinner');
+
+    btn.disabled = true;
+    spinner.classList.remove('hidden');
+
+    if (_supabase) {
+      try {
+        const promises = currentFamilyData.members.map(member => {
+          const novoStatus = member.selected ? 'confirmado' : 'ausente';
+          
+          // Se o ID for um número gerado pelo Supabase, atualiza pelo ID
+          if (typeof member.id === 'number' && member.id > 100) {
+            return _supabase
+              .from('convidados')
+              .update({ 
+                status: novoStatus, 
+                updated_at: new Date().toISOString() 
+              })
+              .eq('id', member.id);
+          } else {
+            // Atualiza combinando código e nome do convidado
+            return _supabase
+              .from('convidados')
+              .update({ 
+                status: novoStatus, 
+                updated_at: new Date().toISOString() 
+              })
+              .eq('codigo_convite', currentFamilyData.code)
+              .eq('nome', member.name);
+          }
+        });
+
+        await Promise.all(promises);
+      } catch (err) {
+        console.error('Erro ao atualizar no Supabase:', err);
+      }
+    }
+
+    setTimeout(() => {
+      btn.disabled = false;
+      spinner.classList.add('hidden');
+      goToStep('success');
+    }, 800);
+  }
+
+  // REINICIAR
+  function resetForm() {
+    document.getElementById('form-code').reset();
+    document.getElementById('error-message').classList.add('hidden');
+    currentFamilyData = null;
+    goToStep('code');
+  }
+
+  // ANIMAÇÃO REVEAL AO ROLAR A PÁGINA
+  document.addEventListener('DOMContentLoaded', () => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.15
     };
 
-    let currentFamilyData = null;
-
-    // GERENCIADOR DE ETAPAS
-    function goToStep(stepName) {
-      document.getElementById('step-code').classList.add('hidden');
-      document.getElementById('step-select').classList.add('hidden');
-      document.getElementById('step-review').classList.add('hidden');
-      document.getElementById('step-success').classList.add('hidden');
-
-      if (stepName === 'code') {
-        document.getElementById('step-code').classList.remove('hidden');
-      } else if (stepName === 'select') {
-        renderMembersList();
-        document.getElementById('step-select').classList.remove('hidden');
-      } else if (stepName === 'review') {
-        renderReviewList();
-        document.getElementById('step-review').classList.remove('hidden');
-      } else if (stepName === 'success') {
-        document.getElementById('step-success').classList.remove('hidden');
-      }
-    }
-
-    // ETAPA 1: SUBMIT DO CÓDIGO
-    function handleCodeSubmit(event) {
-      event.preventDefault();
-      const rawInput = document.getElementById('invite-code-input').value.trim();
-      const errorEl = document.getElementById('error-message');
-      
-      // Limpa traços, espaços e converte para maiúsculo
-      const sanitizedCode = rawInput.replace(/[-_ ]/g, '').toUpperCase();
-
-      if (inviteDatabase[sanitizedCode]) {
-        errorEl.classList.add('hidden');
-        
-        // Mapeia os integrantes para a estrutura interna com status de seleção
-        const membersList = inviteDatabase[sanitizedCode].map((personName, index) => ({
-          id: index + 1,
-          name: personName,
-          selected: true // Por padrão já vem selecionado
-        }));
-
-        currentFamilyData = {
-          code: sanitizedCode,
-          members: membersList
-        };
-
-        document.getElementById('family-title-text').innerText = `Convite ${sanitizedCode}`;
-        goToStep('select');
-      } else {
-        errorEl.classList.remove('hidden');
-      }
-    }
-
-    // ETAPA 2: LISTAR E ALTERAR PRESENÇA INDIVIDUAL
-    function renderMembersList() {
-      const container = document.getElementById('members-container');
-      container.innerHTML = '';
-
-      currentFamilyData.members.forEach(member => {
-        const itemEl = document.createElement('div');
-        itemEl.className = `member-item ${member.selected ? 'selected' : ''}`;
-        itemEl.onclick = () => toggleMember(member.id);
-
-        itemEl.innerHTML = `
-          <div class="member-info">
-            <div class="member-checkbox">${member.selected ? '✓' : ''}</div>
-            <span class="member-name">${member.name}</span>
-          </div>
-          <div class="member-checkbox">${member.selected ? '☑' : '☐'}</div>
-        `;
-        container.appendChild(itemEl);
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
       });
+    }, observerOptions);
 
-      updateCounter();
-    }
-
-    function toggleMember(memberId) {
-      const member = currentFamilyData.members.find(m => m.id === memberId);
-      if (member) {
-        member.selected = !member.selected;
-        renderMembersList();
-      }
-    }
-
-    function updateCounter() {
-      const count = currentFamilyData.members.filter(m => m.selected).length;
-      document.getElementById('counter-text').innerText = `${count} ${count === 1 ? 'pessoa estará presente' : 'pessoas estarão presentes'}`;
-    }
-
-    // ETAPA 3: REVISÃO
-    function renderReviewList() {
-      const container = document.getElementById('summary-container');
-      container.innerHTML = '';
-
-      currentFamilyData.members.forEach(member => {
-        const itemEl = document.createElement('div');
-        itemEl.className = 'summary-item';
-
-        const statusClass = member.selected ? 'status-presente' : 'status-ausente';
-        const statusText = member.selected ? '✓ Presente' : '— Não participará';
-
-        itemEl.innerHTML = `
-          <span class="summary-name">${member.name}</span>
-          <span class="summary-status ${statusClass}">${statusText}</span>
-        `;
-        container.appendChild(itemEl);
-      });
-    }
-
-    // SUBMIT FINAL
-    function submitFinalConfirmation() {
-      const btn = document.getElementById('btn-confirm-final');
-      const spinner = document.getElementById('loading-spinner');
-
-      btn.disabled = true;
-      spinner.classList.remove('hidden');
-
-      setTimeout(() => {
-        btn.disabled = false;
-        spinner.classList.add('hidden');
-        goToStep('success');
-      }, 1200);
-    }
-
-    // REINICIAR
-    function resetForm() {
-      document.getElementById('form-code').reset();
-      document.getElementById('error-message').classList.add('hidden');
-      currentFamilyData = null;
-      goToStep('code');
-    }
+    const elementsToAnimate = document.querySelectorAll('.reveal');
+    elementsToAnimate.forEach(el => observer.observe(el));
+  });
   </script>
 </body>
 </html>
